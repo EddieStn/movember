@@ -121,6 +121,8 @@ Before diving into development, our project harnessed wireframing techniques to 
 
 #### Mobile
 
+During UI design, our focus on mobile convenience didn't compromise the desktop experience. We implemented a responsive design approach that seamlessly accommodates both mobile and desktop users. The relocation of the navigation bar to the bottom for mobile usage didn't hinder the functionality or accessibility on desktop. This approach ensured that users, regardless of their device, could navigate the site with ease, offering a consistent and intuitive experience across various platforms.
+
 * Home Page mobile
 
 <img src="static/images/home-page-mobile-wireframes.png">
