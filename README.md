@@ -221,6 +221,8 @@ Agile values and principles have been followed in the creation of this project. 
 
 ## Credits
 
+* [Uizard.io](https://uizard.io/) for facilitating intuitive wireframing and seamless UX design.
+
 [Return to contents list](#contents)
 
 
