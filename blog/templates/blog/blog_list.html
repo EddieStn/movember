@@ -1,11 +1,26 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-  <h1>Blogs</h1>
-  <div>
-    <h2>{{ blog.title }} </h2>
-    <p> {{ blog.content }} </p>
-    <p>Comments: {{ blog.comments_count }} </p>
-    <p>Likes: {{ blog.likes_count }} </p>
-  </div>
+  <h2>Blog List</h2>
+
+  {% if blogs %}
+    <ul>
+      {% for blog in blogs %}
+        <li>
+          <h3>{{ blog.title }}</h3>
+          <p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %}</p>
+          <p>Created at: {{ blog.created_at }}</p>
+          <p>Likes: {{ blog.likes_count }}</p>
+          <p>Comments: {{ blog.comments_count }}</p>
+          {% if blog.image %}
+          <img src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="max-width: 100%; max-height: 200px;">
+          {% endif %}
+          <p>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No blogs available.</p>
+  {% endif %}
 {% endblock %}
