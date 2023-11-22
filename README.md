@@ -245,6 +245,30 @@ During UI design, our focus on mobile convenience didn't compromise the desktop 
 
 ### The Surface Plane
 
+#### Typography
+
+##### Headings: Kanit
+
+We've chosen Kanit for our headings to infuse a sense of modernity and elegance into our platform. Kanit's clean and stylish appearance adds visual interest to headers, making them stand out while maintaining readability and professionalism.
+
+##### Body Text: Roboto
+
+For the body text, we've opted for Roboto for its excellent readability across various screen sizes. Roboto's clean and versatile style ensures a comfortable reading experience for users, enhancing content legibility and clarity throughout the platform.
+
+
+Our choice of Kanit for headings and Roboto for body text from [Google Fonts](https://fonts.google.com/) aims to establish a consistent and unified typographic style. This deliberate selection ensures a seamless visual flow, guiding users through content effortlessly while presenting a cohesive and refined interface.
+
+#### Color Scheme
+
+Our platform is designed as a vibrant and welcoming space, dedicated to fostering connections and combatting loneliness through shared interests. The choice of colours plays a pivotal role in crafting this user experience. The background, adorned with #f5f5f5, sets the backdrop, ensuring content clarity. Headers and footers feature #93B8BF, imbuing a sense of coherence and continuity throughout the platform. To prompt actions and engagements, #FFAE42 energizes the calls to action, inviting users to participate actively in the community. The hero text container, highlighted in #e6e1c5 against hero images, evokes warmth and readability, drawing attention to key messages. Within cards showcasing blogs and events, #667a92 infuses a touch of elegance to titles, adding visual interest and aiding in content categorization. Finally, #000 delivers crisp and legible text, ensuring readability across all interactions, fostering a seamless and engaging experience.
+
+[Colormind.io](http://colormind.io/) played a crucial role in our colour selection process. We used its tools to explore different combinations, aiming for colours that feel inviting, coherent, and engaging. After trying various options, we settled on a palette that reflects our commitment to fostering connections and combating loneliness. These colours blend well, offering a balance between calming backgrounds and vibrant elements like call-to-action prompts, ensuring readability and visual appeal throughout the platform. Colormind.io was instrumental in helping us create a cohesive and inviting visual identity that aligns with our platform's mission.
+
+<img src="documentation/readme-images/colormind-screenshot.png">
+
+Ensuring accessibility and readability for all users is paramount. We utilized [contrast-grid.eightshapes.com](https://contrast-grid.eightshapes.com/) to evaluate and fine-tune our colour choices. By assessing the contrast ratios, we confirmed that our selected palette meets accessibility standards, guaranteeing clear legibility and visual clarity across our platform. This tool enabled us to verify that our colour combinations maintain adequate contrast, supporting inclusivity and a seamless user experience for everyone.
+
+<img src="documentation/readme-images/contrast-grid-screenshot.png">
 
 [Return to contents list](#contents)
 
