@@ -52,7 +52,7 @@ Project currently under development and no live link available.
 
 #### Project Theme
 
-This project is being created for the “Talking Tech: Men’s Health Reimagined” Movember Hackathon and will focus on Men’s mental health.
+This project is being created for the “Talking Tech: Men’s Health Reimagined” Movember Hackathon and will focus on Men’s **mental health**.
 
 
 #### Research into Men's Mental Health
@@ -69,8 +69,8 @@ There is clear and well evidenced research showing:
 
 -	Loneliness is an area where more needs to be done.
 
-However, the research around how loneliness is most effectively tackled is not currently there. With the suggestion that a 
-> ‘range of approaches may be required, tailored to fit people’s individual experiences of loneliness and contexts’. 
+However, there is little current research around how loneliness is most effectively tackled. With the suggestion that a 
+> range of approaches may be required, tailored to fit people’s individual experiences of loneliness and contexts. 
 
 <details>
 <summary>
