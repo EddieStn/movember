@@ -90,32 +90,32 @@ Before diving into development, our project harnessed wireframing techniques to 
 
 * Home page
 
-<img src="static/images/home-page-wireframe.png">
+<img src="documentation/readme-images/home-page-wireframe.png">
 
 ***
 * Blog / Events Page
 
-<img src="static/images/blog-event-page-wireframes.png">
+<img src="documentation/readme-images/blog-event-page-wireframes.png">
 
 ***
 * Upload Blog / Event Page
 
-<img src="static/images/add-blog-event-page-wireframes.png">
+<img src="documentation/readme-images/add-blog-event-page-wireframes.png">
 
 ***
 * Registration Page
 
-<img src="static/images/registration-page-wireframes.png">
+<img src="documentation/readme-images/registration-page-wireframes.png">
 
 ***
 * Login Page
 
-<img src="static/images/login-page-wireframes.png">
+<img src="documentation/readme-images/login-page-wireframes.png">
 
 ***
 * Account Page
 
-<img src="static/images/account-page-wireframes.png">
+<img src="documentation/readme-images/account-page-wireframes.png">
 
 ***
 
@@ -125,32 +125,32 @@ During UI design, our focus on mobile convenience didn't compromise the desktop 
 
 * Home Page mobile
 
-<img src="static/images/home-page-mobile-wireframes.png">
+<img src="documentation/readme-images/home-page-mobile-wireframes.png">
 
 ***
 * Blog / Events Page mobile
 
-<img src="static/images/blogs-events-mobile-wireframes.png">
+<img src="documentation/readme-images/blogs-events-mobile-wireframes.png">
 
 ***
 * Upload Blog / Event Page mobile
 
-<img src="static/images/add-blog-event-mobile-wireframes.png">
+<img src="documentation/readme-images/add-blog-event-mobile-wireframes.png">
 
 ***
 * Registration Page mobile
 
-<img src="static/images/register-moblie-wireframes.png">
+<img src="documentation/readme-images/register-moblie-wireframes.png">
 
 ***
 * Login Page Mobile
 
-<img src="static/images/login-mobile-wireframes.png">
+<img src="documentation/readme-images/login-mobile-wireframes.png">
 
 ***
 * Account Page Mobile
 
-<img src="static/images/account-page-mobile-wireframes.png">
+<img src="documentation/readme-images/account-page-mobile-wireframes.png">
 
 
 
