@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 
     # others
     'cloudinary',
+    'cloudinary_storage',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
