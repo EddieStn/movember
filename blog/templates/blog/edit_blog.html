@@ -14,6 +14,7 @@
                 {{ form.image | as_crispy_field }}
                 <button type="submit" class="btn btn-primary mt-3" aria-label="submit the form">Save Changes</button>
             </form>
+            <a href="{% url 'blog_list' %}" class="btn btn-secondary" aria-label="back to blog list">Back to Blog List</a>
         </div>
     </div>
 </div>

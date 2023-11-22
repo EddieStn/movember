@@ -55,3 +55,17 @@ def edit_blog(request, blog_id):
         form = BlogForm(instance=blog)
 
     return render(request, 'blog/edit_blog.html', {'form': form, 'blog': blog})
+
+
+@login_required
+def delete_blog(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+
+    if blog.author != request.user:
+        return render(request, 'blog/unauthorized_access.html')
+
+    if request.method == 'POST':
+        blog.delete()
+        return redirect('blog_list')
+
+    return render(request, 'blog/delete_blog.html', {'blog': blog})

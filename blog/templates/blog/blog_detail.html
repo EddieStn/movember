@@ -18,6 +18,6 @@
 
 {% if user.is_authenticated and blog.author == user %}
 <a href="{% url 'edit_blog' blog.id %}" class="btn btn-primary" aria-label="edit blog">Edit</a>
-<a href="" class="btn btn-danger" aria-label="delete blog">Delete</a>
+<a href="{% url 'delete_blog' blog.id %}" class="btn btn-danger" aria-label="delete blog">Delete</a>
 {% endif %}
 {% endblock %}
