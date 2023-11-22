@@ -135,9 +135,15 @@ Note, while this is the target user group it is important that the project creat
 
 #### Project Aim
 
+To create a plaform where men can come together and connect with others over shared interests. They will be able to create and comment on blog posts and sign up to online and in-person events. 
+
+Uniquely, the platform will be designed to provide as few as possible barriers for men initially joining the platform (no expectations and the option to remain anonymous). As they grow more comfortable and at ease on the platform they can choose to start contributing and become more visible. When ready, they can then take the next steps into asking questions about events and then signing up and going along. 
+
+#### Mission Statement
+
 “When the leap is too great, step by step the impossible becomes achievable. Supporting men across the chasm from loneliness to connection, friendship and belonging, through shared interests.”
 
-The flow chart shows how users might negotiate that chasm step by step through our site.
+The flow chart below plans how users might negotiate that chasm step by step through our site.
 
 ![Flow diagram showing how a user might negotiate the chasm between loneliness to connection, friendship and belonging](documentation/planning/negotitating-the-chasm.drawio.png)
 
