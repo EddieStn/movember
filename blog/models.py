@@ -29,6 +29,7 @@ class Blog(models.Model):
     comments = models.ManyToManyField(Comment, related_name='blog_comments', blank=True)
     anonymous = models.BooleanField(default=False)
     interests = models.ManyToManyField(Interest, blank=True)
+    image = models.ImageField(upload_to='blog-images/', blank=True, null=True)
 
     @property
     def likes_count(self):
