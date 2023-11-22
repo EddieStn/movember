@@ -3,7 +3,9 @@ from .models import Blog, Interest
 
 class BlogForm(forms.ModelForm):
     interests = forms.CharField(
-        max_length=255, help_text='Enter interests separated by commas'
+        max_length=255,
+        required=False,
+        help_text='Enter interests separated by commas',
     )
 
     class Meta:

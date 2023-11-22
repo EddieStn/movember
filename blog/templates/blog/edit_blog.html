@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="mb-4 d-flex justify-content-center">Edit Blog</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.title | as_crispy_field }}
+                {{ form.content | as_crispy_field }}
+                {{ form.interests | as_crispy_field }}
+                {{ form.image | as_crispy_field }}
+                <button type="submit" class="btn btn-primary mt-3" aria-label="submit the form">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
