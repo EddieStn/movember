@@ -82,6 +82,75 @@ Project currently under development and no live link available.
 
 ### The Skeleton Plane
 
+#### Wireframes
+
+Before diving into development, our project harnessed wireframing techniques to meticulously structure the platform's user interface. These wireframes formed the bedrock of our design, mapping out the strategic placement of essential elements and interactions. This early visualization of the layout played a crucial role in refining the user experience, guaranteeing intuitive navigation and seamless interaction for our users. This systematic approach not only guided our development efforts but also paved the way for crafting a polished, user-centric platform interface.
+
+#### Desktop
+
+* Home page
+
+<img src="static/images/home-page-wireframe.png">
+
+***
+* Blog / Events Page
+
+<img src="static/images/blog-event-page-wireframes.png">
+
+***
+* Upload Blog / Event Page
+
+<img src="static/images/add-blog-event-page-wireframes.png">
+
+***
+* Registration Page
+
+<img src="static/images/registration-page-wireframes.png">
+
+***
+* Login Page
+
+<img src="static/images/login-page-wireframes.png">
+
+***
+* Account Page
+
+<img src="static/images/account-page-wireframes.png">
+
+***
+
+#### Mobile
+
+* Home Page mobile
+
+<img src="static/images/home-page-mobile-wireframes.png">
+
+***
+* Blog / Events Page mobile
+
+<img src="static/images/blogs-events-mobile-wireframes.png">
+
+***
+* Upload Blog / Event Page mobile
+
+<img src="static/images/add-blog-event-mobile-wireframes.png">
+
+***
+* Registration Page mobile
+
+<img src="static/images/register-moblie-wireframes.png">
+
+***
+* Login Page Mobile
+
+<img src="static/images/login-mobile-wireframes.png">
+
+***
+* Account Page Mobile
+
+<img src="static/images/account-page-mobile-wireframes.png">
+
+
 
 [Return to contents list](#contents)
 
