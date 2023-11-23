@@ -1,34 +1,40 @@
-{% extends "account/base_entrance.html" %}
+{% extends "base.html" %}
+
+{% load static %}
+
 {% load i18n %}
 {% load allauth account socialaccount %}
 {% block head_title %}
     {% trans "Sign In" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign In" %}
-    {% endelement %}
-    <p>
-        {% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
-    </p>
-    {% url 'account_login' as login_url %}
-    {% element form form=form method="post" action=login_url tags="entrance,login" %}
-        {% slot body %}
+
+<!-- Hero Image from Landing Page as background-->
+
+<div class="text-center bg-image position-relative">
+    <img src="{% static 'images/hero-image.jpg' %}" alt="Men Laughing" class="img-fluid hero-image" />
+    
+    <div class="d-flex justify-content-center align-items-center position-absolute start-50 translate-middle text-white text-center w-75 login-container" >
+      <!-- Log in Form -->
+      <div class="bg-dark bg-opacity-75 p-4 rounded">
+        <h2 class="display-5 brand-font-alt mb-3">{% trans "Log In" %}</h2>
+        <hr>
+        <p>
+            {% blocktrans %}If you have not created an account yet, then please
+        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+        </p>
+        <form class="login" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
+            {{ form|crispy }}
             {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
             {% endif %}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" tags="prominent,login" %}
-                {% trans "Sign In" %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
-    {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+            <button class="btn btn-outline-light btn-lg call-to-action navigation-links" type="submit">{% trans "Log In" %}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 {% endblock content %}
