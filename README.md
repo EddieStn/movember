@@ -145,13 +145,29 @@ Uniquely, the platform will be designed to provide as few as possible barriers f
 
 The flow chart below plans how users might negotiate that chasm step by step through our site.
 
-![Flow diagram showing how a user might negotiate the chasm between loneliness to connection, friendship and belonging](documentation/planning/negotitating-the-chasm.drawio.png)
+![Flow diagram showing how a user might negotiate the chasm between loneliness to connection, friendship and belonging](documentation/readme-images/negotitating-the-chasm.drawio.png)
 
 [Return to contents list](#contents)
 
 ---
 
 ### The Scope Plane
+
+The scope of this project is provided by user stories, organised below by epic and then role.
+
+#### EPIC - General User Account
+
+#### EPIC - Facilitator Account
+
+#### EPIC - Visiting User Experience
+
+#### EPIC - Navigation
+
+#### EPIC - Blogs
+
+#### EPIC - Blog Commenting
+
+#### EPIC - Events
 
 
 [Return to contents list](#contents)
