@@ -3,12 +3,12 @@ from .models import Profile
 
 
 class ProfileAdmin(admin.ModelAdmin):
+    """" User Profile admin """
     list_display = (
         "pk",
         "user",
         "alias",
         "image",
-        "image_alt",
         "about_me",
         "is_facilitator",
         "show_alias",
