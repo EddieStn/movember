@@ -3,3 +3,21 @@
 img.logo {
     width: 5.5rem;
 }
+
+/* ----------Footer---------- */
+
+.footer {
+    background-color: #93b8bf;
+}
+
+.footer a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-images {
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%; 
+    border: #000 1px solid;
+}
