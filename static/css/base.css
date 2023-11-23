@@ -1,3 +1,17 @@
+
+/* Global Variables */
+
+:root {
+    /* Colors */
+    --off-white: #f5f5f5;
+    --blue-grey: #93b8bf;
+    --orange: #ffae42;
+    --beige: #e6e1c5;
+    --dark-blue: #667a92;
+    --black: #000;
+    --white: #fff;
+}
+
 /* resized sample logo to test if css is connected */
 
 img.logo {
@@ -6,20 +20,20 @@ img.logo {
 
 /* ----------Footer---------- */
 
-.footer {
-    background-color: #93b8bf;
+footer {
+    background-color: var(--blue-grey);
 }
 
-.footer a {
+footer a {
     text-decoration: none;
-    color: black;
+    color: var(--black);
 }
 
 .footer-images {
     width: 6.25rem; 
     height: 6.25rem; 
     border-radius: 50%; 
-    border: #000 1px solid;
+    border: var(--black) 1px solid;
 }
 .zoom-effect img {
     transition: transform 0.3s ease-in-out;
