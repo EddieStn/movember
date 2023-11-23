@@ -7,17 +7,99 @@
 <img src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="max-width: 100%; max-height: 200px;">
 {% endif %}
 
-<h3>{{ blog.title }}</h3>
-<p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %}</p>
-<p>Content: {{ blog.content }}</p>
-<p>Created at: {{ blog.created_at }}</p>
-<p>Likes: {{ blog.likes_count }}</p>
-<p>Comments: {{ blog.comments_count }}</p>
 
-<p>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+
+
 
 {% if user.is_authenticated and blog.author == user %}
 <a href="{% url 'edit_blog' blog.id %}" class="btn btn-primary" aria-label="edit blog">Edit</a>
 <a href="{% url 'delete_blog' blog.id %}" class="btn btn-danger" aria-label="delete blog">Delete</a>
 {% endif %}
 {% endblock %}
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="d-none d-md-block col-md-6 masthead-image">
+                {% if blog.image %}
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="max-width: 100%; max-height: 200px;">
+                {% endif %}
+            </div>
+            <div class="col-md-6 masthead-text">
+                <h3>{{ blog.title }}</h3>
+                <p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %} | {{ blog.created_at }}</p>
+                <p>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <p class="card-text ">
+                    {{ blog.content | safe }}
+                </p>
+                <div class="row">
+
+                    <div class="col-1">
+                        <strong>
+                            
+                            <span class="text-secondary"><p>Likes: {{ blog.likes_count }}</p></span>
+                        </strong>
+                    </div>
+                    <div class="col-1">
+                        {% with comments.count as total_comments %}
+                        <strong class="text-secondary"><i class="far fa-comments"></i>
+                            {{ total_comments }}</strong>
+                        {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3>Comments:</h3>
+            <div class="card-body">
+                {% for comment in comments %}
+                <div class="comments" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        {{ comment.name }}
+                        <span class=" text-muted font-weight-normal">
+                            {{ comment.created_on }}
+                        </span> wrote:
+                    </p>
+                    {{ comment.body | linebreaks }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 card mb-4  mt-3 ">
+            <div class="card-body">
+                {% if commented %}
+                <div class="alert alert-success" role="alert">
+                    Your comment is awaiting approval
+                </div>
+                {% else %}
+                {% if user.is_authenticated %}
+
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
