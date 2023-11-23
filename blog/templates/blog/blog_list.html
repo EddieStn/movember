@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Blog List</h2>
-  <a href="{% url 'create_blog' %}" class="btn btn-secondary" aria-label="back to blog list">Create Blog</a>
+  <a href="{% url 'create_blog' %}" class="btn btn-secondary" aria-label="back to blog list">Create a Blog</a>
 {% if blogs %}
 <ul>
   {% for blog in blogs %}
