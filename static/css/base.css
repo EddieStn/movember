@@ -68,10 +68,6 @@ img.logo {
     position: relative;
 }
 
-.hero-search {
-    width: 300px;
-}
-
 .about-section {
     background-color: var(--dark-blue) ;
 }
