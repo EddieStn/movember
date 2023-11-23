@@ -16,8 +16,8 @@ img.logo {
 }
 
 .footer-images {
-    width: 100px; 
-    height: 100px; 
+    width: 6.25rem; 
+    height: 6.25rem; 
     border-radius: 50%; 
     border: #000 1px solid;
 }
