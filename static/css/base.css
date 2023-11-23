@@ -22,9 +22,9 @@ img.logo {
     border: #000 1px solid;
 }
 .zoom-effect img {
-    transition: transform 0.3s ease-in-out; /* Smooth transition on transform property */
+    transition: transform 0.3s ease-in-out;
   }
   
 .zoom-effect:hover img {
-    transform: scale(1.1); /* Increase scale on hover */
+    transform: scale(1.1); 
   }
