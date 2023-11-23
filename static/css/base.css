@@ -54,7 +54,7 @@ h2 {
 
 
 img.logo {
-    width: 5.5rem;
+    width: 13vw;
 }
 
 /* ----------Home Page---------- */
@@ -104,3 +104,16 @@ footer a {
 .zoom-effect:hover img {
     transform: scale(1.1); 
   }
+
+/* ----------Header---------- */
+
+.header {
+    background-color: var(--blue-grey);
+}
+
+.navigation-links {
+    color : var(--black);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
