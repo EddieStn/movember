@@ -108,3 +108,14 @@ footer a {
 .zoom-effect:hover img {
     transform: scale(1.1); 
   }
+
+/* ----------Header---------- */
+
+.header {
+    background-color: var(--blue-grey);
+}
+
+.navigation-links {
+    color : var(--black);
+    margin-right: 10px;
+}
