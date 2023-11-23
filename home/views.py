@@ -10,3 +10,7 @@ class Index(TemplateView):
 class About(TemplateView):
     """Views for the Index page"""
     template_name = 'home/about.html'
+
+class Faq(TemplateView):
+    """Views for the Index page"""
+    template_name = 'home/faq.html'
