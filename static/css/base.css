@@ -54,7 +54,7 @@ h2 {
 
 
 img.logo {
-    width: 5.5rem;
+    width: 13vw;
 }
 
 /* ----------Home Page---------- */
@@ -114,4 +114,6 @@ footer a {
 .navigation-links {
     color : var(--black);
     margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }

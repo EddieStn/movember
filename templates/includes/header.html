@@ -5,7 +5,7 @@
     <div class="container-fluid header">
         <!-- Logo -->
         <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="{% static 'favicon/favicon-32x32.svg' %}" alt="sample logo" class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="sample logo" class="logo">
         </a>
 
         <!-- Toggler Button -->
@@ -31,12 +31,12 @@
                 <!-- Dynamic User Account Section -->
                 {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle btn btn-outline-light btn-lg call-to-action navigation-links" href="#" id="userMenuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class=" dropdown-toggle btn btn-outline-light btn-lg call-to-action navigation-links" href="#" id="userMenuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             My Account
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="userMenuDropdown">
-                            <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
-                            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                            <li><a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'profile' %}">My Profile</a></li>
+                            <li><a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'account_logout' %}">Logout</a></li>
                         </ul>
                     </li>
                 {% else %}
