@@ -36,26 +36,26 @@
 
                     <div class="col-1">
                         <strong>
+                        <span class="text-secondary"><p>Likes: {{ blog.likes_count }}</p></span>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'blog_like' blog_id %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{blog_id}}">Dislike</button>
+                                <button type="submit" name="blogpost_id" value="{{blog_id}}"><i class="fas fa-heart"></i>Dislike</button>
                                 {% else %}
-                                <button type="submit" name="blogpost_id" value="{{blog_id}}">Like</button>
+                                <button type="submit" name="blogpost_id" value="{{blog_id}}"><i class="far fa-heart"></i>Like</button>
                                 {% endif %}
                             </form>
                             {% else %}
                             <span class="text-secondary"><i class="far fa-heart"></i></span>
                             {% endif %}
-                        <span class="text-secondary"><p>Likes: {{ blog.likes_count }}</p></span>
                         </strong>
                     </div>
                     <div class="col-1">
+                        <p>Comments:
                         {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
-                            {{ total_comments }}</strong>
-                        {% endwith %}
+                        <strong class="text-secondary">{{ total_comments }}</strong>
+                        {% endwith %}</p>
                     </div>
                 </div>
             </div>

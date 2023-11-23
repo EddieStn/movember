@@ -22,6 +22,10 @@ class Blog(models.Model):
     @property
     def likes_count(self):
         return self.likes.count()
+    
+    @property
+    def comments_count(self):
+        return self.comments.filter(approved=True).count()
 
 
 class Comment(models.Model):

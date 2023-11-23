@@ -15,9 +15,9 @@
     <p>Content: {{ blog.content }}</p>
     <p>Created at: {{ blog.created_at }}</p>
     <p>Likes: {{ blog.likes_count }}</p>
-    <p>Comments: {{ blog.comments_count }}</p>
+    <p>Comments: {{ blog.comments.count }}</p>
     <p><small>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
-    
+    <a href="{% url 'blog_detail' blog.id %}">Go to post</a>
   </li>
   {% endfor %}
 </ul>
