@@ -21,3 +21,10 @@ img.logo {
     border-radius: 50%; 
     border: #000 1px solid;
 }
+.zoom-effect img {
+    transition: transform 0.3s ease-in-out; /* Smooth transition on transform property */
+  }
+  
+.zoom-effect:hover img {
+    transform: scale(1.1); /* Increase scale on hover */
+  }
