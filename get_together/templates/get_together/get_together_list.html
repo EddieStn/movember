@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Upcoming Get-Togethers</h1>
+    <ul>
+        {% for get_together in get_togethers %}
+        <li>
+            <a href="{% url 'get_together_detail' get_together.id %}">{{ get_together.title }}</a>
+            - Date: {{ get_together.date }}
+            - Max Participants: {{ get_together.max_participants }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
