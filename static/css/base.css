@@ -75,6 +75,15 @@ img.logo {
 .about-section {
     background-color: var(--dark-blue) ;
 }
+
+/* PLACEHOLDER FOR THE CARDS */
+/* PLEASE REMOVE WHEN CARDS IMPLEMENTED */
+.placeholder-img {
+    height: 200px; 
+    border: 1px solid #ddd;
+    margin-bottom: 10px; 
+}
+
 /* ----------Footer---------- */
 
 footer {
