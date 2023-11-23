@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from .models import Blog
 from .forms import BlogForm, CommentForm
@@ -50,13 +50,32 @@ def blog_detail(request, blog_id):
         comment_form = CommentForm()
 
     context = {
-        "blog": blog,
-        "comments": comments,
-        "commented": request.method == 'POST',
-        "liked": liked,
-        "comment_form": comment_form
+        'blog': blog,
+        'comments': comments,
+        'commented': request.method == 'POST',
+        'liked': liked,
+        'comment_form': comment_form,
+        'blog_id': blog_id
     }
-    return render(request, "blog_detail.html", context)
+    return render(request, 'blog/blog_detail.html', context)
+
+
+@login_required
+def edit_blog(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+
+    if blog.author != request.user:
+        return render(request, 'blog/unauthorized_access.html')
+
+    if request.method == 'POST':
+        form = BlogForm(request.POST, request.FILES, instance=blog)
+        if form.is_valid():
+            form.save()
+            return redirect('blog_list')
+    else:
+        form = BlogForm(instance=blog)
+
+    return render(request, 'blog/edit_blog.html', {'form': form, 'blog': blog})
 
 
 @login_required
@@ -72,3 +91,15 @@ def delete_blog(request, blog_id):
 
     return render(request, 'blog/delete_blog.html', {'blog': blog})
 
+
+@login_required
+def blog_like(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+
+    if request.method == 'POST':
+        if blog.likes.filter(id=request.user.id).exists():
+            blog.likes.remove(request.user)
+        else:
+            blog.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse('blog_detail', args=[blog_id]))

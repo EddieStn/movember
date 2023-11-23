@@ -3,36 +3,27 @@
 {% block content %}
 <h2>Blog Details</h2>
 
-{% if blog.image %}
-<img src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="max-width: 100%; max-height: 200px;">
-{% endif %}
-
-
-
-
-
-
 {% if user.is_authenticated and blog.author == user %}
 <a href="{% url 'edit_blog' blog.id %}" class="btn btn-primary" aria-label="edit blog">Edit</a>
 <a href="{% url 'delete_blog' blog.id %}" class="btn btn-danger" aria-label="delete blog">Delete</a>
 {% endif %}
-{% endblock %}
-<div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                {% if blog.image %}
-                <img src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="max-width: 100%; max-height: 200px;">
-                {% endif %}
-            </div>
-            <div class="col-md-6 masthead-text">
-                <h3>{{ blog.title }}</h3>
-                <p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %} | {{ blog.created_at }}</p>
-                <p>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-            </div>
+
+
+<div class="container">
+    <div class="row g-0">
+        <div class="d-none d-md-block col-md-6">
+            {% if blog.image %}
+            <img src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="max-width: 100%; max-height: 200px;">
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <h3>{{ blog.title }}</h3>
+            <p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %} | {{ blog.created_at }}</p>
+            <p>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
         </div>
     </div>
 </div>
+
 
 <div class="container">
     <div class="row">
@@ -45,8 +36,19 @@
 
                     <div class="col-1">
                         <strong>
-                            
-                            <span class="text-secondary"><p>Likes: {{ blog.likes_count }}</p></span>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'blog_like' blog_id %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+                                <button type="submit" name="blogpost_id" value="{{blog_id}}">Dislike</button>
+                                {% else %}
+                                <button type="submit" name="blogpost_id" value="{{blog_id}}">Like</button>
+                                {% endif %}
+                            </form>
+                            {% else %}
+                            <span class="text-secondary"><i class="far fa-heart"></i></span>
+                            {% endif %}
+                        <span class="text-secondary"><p>Likes: {{ blog.likes_count }}</p></span>
                         </strong>
                     </div>
                     <div class="col-1">
@@ -103,3 +105,4 @@
         </div>
     </div>
 </div>
+{% endblock %}
