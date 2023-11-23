@@ -1,5 +1,126 @@
-/* resized sample logo to test if css is connected */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;1,300&family=Roboto&display=swap');
+
+/* Global Variables */
+
+:root {
+    /* Colors */
+    --off-white: #f5f5f5;
+    --blue-grey: #93b8bf;
+    --orange: #ffae42;
+    --beige: #e6e1c5;
+    --dark-blue: #667a92;
+    --black: #000;
+    --white: #fff;
+
+    /* Global Button Styling */
+
+    --call-to-action:var(--orange)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* Body */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    background-color: var(--off-white);
+
+}
+
+/* Headings */
+
+h1,
+h2 {
+    font-family: 'Kanit', sans-serif;
+}
+
+/* Button Styling */
+
+.call-to-action {
+    background-color: var(--call-to-action);
+    border-color: var(--call-to-action);
+    color: var(--white);
+    transition: transform 0.2s ease-in-out;
+}
+
+.call-to-action:hover {
+  transform: scale(1.05);
+}
+
 
 img.logo {
-    width: 5.5rem;
+    width: 13vw;
+}
+
+/* ----------Home Page---------- */
+
+.hero-image {
+    width: 100%;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.about-section {
+    background-color: var(--dark-blue) ;
+}
+
+/* PLACEHOLDER FOR THE CARDS */
+/* PLEASE REMOVE WHEN CARDS IMPLEMENTED */
+.placeholder-img {
+    height: 200px; 
+    border: 1px solid #ddd;
+    margin-bottom: 10px; 
+}
+
+/* ----------Footer---------- */
+
+footer {
+    background-color: var(--blue-grey);
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.footer-images {
+    width: 6.25rem; 
+    height: 6.25rem; 
+    border-radius: 50%; 
+    border: var(--black) 1px solid;
+}
+.zoom-effect img {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+.zoom-effect:hover img {
+    transform: scale(1.1); 
+  }
+
+/* ----------Header---------- */
+
+.header {
+    background-color: var(--blue-grey);
+}
+
+.navigation-links {
+    color : var(--black);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+
+/* -----------Login--------- */
+.login-container {
+    top: 16rem;
 }

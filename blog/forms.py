@@ -1,6 +1,7 @@
 from django import forms
 from .models import Blog, Interest
 
+
 class BlogForm(forms.ModelForm):
     interests = forms.CharField(
         max_length=255,
@@ -15,11 +16,11 @@ class BlogForm(forms.ModelForm):
     def save(self, commit=True, author=None):
         blog = super().save(commit=False)
 
-        if commit:
-            blog.save()
-
         if author is not None:
             blog.author = author
+
+        if commit:
+            blog.save()
 
         interest_names = [name.strip() for name in self.cleaned_data['interests'].split(',')]
         for name in interest_names:
