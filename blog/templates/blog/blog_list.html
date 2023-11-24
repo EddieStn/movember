@@ -1,48 +1,54 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-4 mb-5 text-center">
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="">Discover Blogs</h2>
-      <hr>
-    </div>
+
+<div class="mt-4 mb-1 text-center">
+  <h2 class="">Discover Blogs</h2>
+  <div id="create-blog-btn" class="">
+    <a href="{% url 'create_blog' %}" class="btn btn-warning" aria-label="Create a blog">Create a Blog</a>
   </div>
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6 d-flex align-items-center justify-content-center">
-      <form class="form-inline w-100 mt-3">
-        <div class="input-group w-100">
-          <input class="form-control" type="search" placeholder="&#128269; Search Blogs" aria-label="Search Blogs">
-        </div>
-      </form>
-    </div>
-    <div id="create-blog-btn" class="col-md-3 mt-3">
-      <a href="{% url 'create_blog' %}" class="btn btn-warning" aria-label="Create a blog">Create a Blog</a>
-    </div>
-  </div>
+  <hr>
 </div>
 
+<div class="search-bar">
+  <form class="form-inline w-100">
+    <div class="input-group w-100">
+      <input class="form-control" type="search" placeholder="&#128269; Search Blogs" aria-label="Search Blogs">
+    </div>
+  </form>
+</div>
 
-{% if blogs %}
-<ul>
-  {% for blog in blogs %}
-  <li>
-    {% if blog.image %}
-    <img src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="max-width: 100%; max-height: 200px;">
+<div class="container-blogs">
+  <div class="row">
+    {% if blogs %}
+      <!-- Blog Entries Column -->
+      <div class="col-12 mt-3 left">
+          <div class="row">
+              {% for blog in blogs %}
+              <div class="col-md-4">
+                  <div class="card mb-4">
+                      <div class="card-body">
+                        <div class="image-container">
+
+                            {% if blog.image %}
+                              <img src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="width: 100%; height: auto;">
+                            {% endif %}
+                            <h3><a href="{% url 'blog_detail' blog.id %}" class="blog-title">{{ blog.title }}</a></h3>
+                            <p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %}</p>
+                            <p>Content: {{ blog.content }}</p>
+                            <p>Created at: {{ blog.created_at }}</p>
+                            <p>Likes: {{ blog.likes_count }}</p>
+                            <p>Comments: {{ blog.comments.count }}</p>
+                            <p><small>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
+                            <a href="{% url 'blog_detail' blog.id %}" class="btn btn-outline-light btn-lg call-to-action navigation-links" id="to-post-button">Go to post</a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+
+    {% else %}
+    <p>No blogs available.</p>
     {% endif %}
-    <h3><a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></h3>
-    <p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %}</p>
-    <p>Content: {{ blog.content }}</p>
-    <p>Created at: {{ blog.created_at }}</p>
-    <p>Likes: {{ blog.likes_count }}</p>
-    <p>Comments: {{ blog.comments.count }}</p>
-    <p><small>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
-    <a href="{% url 'blog_detail' blog.id %}">Go to post</a>
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>No blogs available.</p>
-{% endif %}
+
 {% endblock %}
