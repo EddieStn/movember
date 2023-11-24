@@ -158,3 +158,20 @@ footer a {
 .facilitator-thankyou {
     color: var(--orange)
 }
+
+#profile-container {
+    width: 50rem;
+    margin: 0 auto;
+}
+
+@media screen and (max-width:1000px) {
+    #profile-container {
+        width: 40rem;
+    }
+}
+
+@media screen and (max-width:767px) {
+    #profile-container {
+        width: 20rem;
+    }
+}
