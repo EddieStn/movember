@@ -119,8 +119,25 @@ footer a {
 }
 
 
-
 /* -----------Login--------- */
+
 .login-container {
     top: 16rem;
+}
+
+
+/* ---------Sign-up-------- */
+
+.signup-container {
+    top: 20rem;
+}
+.over-18 {
+    color: var(--orange)
+}
+
+@media screen and (max-width:1200px) {
+    #register-image {
+        height: 45rem;
+        object-fit: cover;
+    }
 }
