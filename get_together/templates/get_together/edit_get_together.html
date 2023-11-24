@@ -5,8 +5,9 @@
 <div class="container">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update Get Together</button>
+        {{ form.media }}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Update Get Together</button>
     </form>
 </div>
 {% endblock %}
