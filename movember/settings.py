@@ -30,7 +30,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'movember1-bac9d403956e.herokuapp.com', '*.herokuapp.com']
 
@@ -188,17 +188,18 @@ LOGIN_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+API_SECRET = os.environ.get('API_SECRET')
 
 cloudinary.config( 
   cloud_name = "duiyfy10a", 
   api_key = "527288786513998", 
-  api_secret = "tVaPmUQOXfnsIyK4DQ-_sFUWuFI"
+  api_secret = API_SECRET
 )
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'duiyfy10a',
     'API_KEY': '527288786513998',
-    'API_SECRET': 'tVaPmUQOXfnsIyK4DQ-_sFUWuFI'
+    'API_SECRET': API_SECRET
 }
 
 STATIC_URL = '/static/'
