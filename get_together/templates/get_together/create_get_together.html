@@ -2,11 +2,16 @@
 {% load static %}
 
 {% block content %}
-<div class="container w-100">
+<div class="container">
     <form method="post" enctype="multipart/form-data">
+        <h1>Create a Get Together Event</h1>
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Create Get Together</button>
+        {{ form.media }}
+        {{ form|crispy }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Add Get Together</button>
+        </div>
+
     </form>
 </div>
 {% endblock %}
