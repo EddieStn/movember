@@ -1,1 +1,1 @@
-web: gunicorn movember.wsgi
+web: gunicorn movember.wsgi:application
