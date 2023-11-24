@@ -54,7 +54,7 @@ h2 {
 
 
 img.logo {
-    width: 13vw;
+    width: 10vw;
 }
 
 /* ----------Home Page---------- */
@@ -119,8 +119,31 @@ footer a {
 }
 
 
-
 /* -----------Login--------- */
+
 .login-container {
-    top: 16rem;
+    top: 18rem;
+}
+
+@media screen and (max-width:1200px) {
+    #login-image {
+        height: 45rem;
+        object-fit: cover;
+    }
+}
+
+/* ---------Sign-up-------- */
+
+.signup-container {
+    top: 20rem;
+}
+.over-18 {
+    color: var(--orange)
+}
+
+@media screen and (max-width:1200px) {
+    #register-image {
+        height: 45rem;
+        object-fit: cover;
+    }
 }
