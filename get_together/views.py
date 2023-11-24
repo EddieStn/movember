@@ -19,10 +19,12 @@ def get_together_list(request):
 @login_required
 def get_together_detail(request, get_together_id):
     get_together = get_object_or_404(GetTogether, pk=get_together_id)
-    can_join = (not request.user.profile.is_facilitator and
-                not get_together.is_full() and
-                get_together.signup_deadline > timezone.now())
-    return render(request, 'get_together/get_together_detail.html', {'get_together': get_together, 'can_join': can_join})
+    can_join = request.user not in get_together.participants.all() and \
+               not get_together.is_full() and \
+               get_together.signup_deadline > timezone.now() and \
+               request.user != get_together.organizer
+    return render(request, 'get_together/get_together_detail.html',
+                  {'get_together': get_together, 'can_join': can_join})
 
 
 @login_required
