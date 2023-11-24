@@ -5,5 +5,22 @@
 <div class="container">
     <h1>{{ get_together.title }}</h1>
     <p>{{ get_together.description }}</p>
+    <p><strong>Date:</strong> {{ get_together.date }}</p>
+    <p><strong>Time:</strong> {{ get_together.time }}</p>
+    <p><strong>Location:</strong> {{ get_together.location }}</p>
+    <p><strong>Organizer:</strong> {{ get_together.organizer.username }}</p>
+    <p><strong>Maximum Participants:</strong> {{ get_together.max_participants }}</p>
+    <p><strong>Signup Deadline:</strong> {{ get_together.signup_deadline }}</p>
+
+    {% if get_together.image %}
+        <img src="{{ get_together.image.url }}" alt="{{ get_together.image_alt }}">
+    {% endif %}
+
+    {% if can_join %}
+        <form action="{% url 'register_for_get_together' get_together.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Join this Get Together</button>
+        </form>
+    {% endif %}
 </div>
 {% endblock %}

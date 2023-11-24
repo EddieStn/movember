@@ -24,8 +24,19 @@
                 <li class="nav-item">
                     <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'blog_list' %}">Blog</a>
                 </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'get_together_list' %}">Events</a>
+                <!-- Get Together Section -->
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle btn btn-outline-light btn-lg call-to-action navigation-links" href="#" id="getTogetherMenuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Get Togethers
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="getTogetherMenuDropdown">
+                        <li><a class="dropdown-item" href="{% url 'get_together_list' %}">Event List</a></li>
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.profile.is_facilitator %}
+                                <li><a class="dropdown-item" href="{% url 'create_get_together' %}">Create Event</a></li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'faq' %}">FAQ</a>
