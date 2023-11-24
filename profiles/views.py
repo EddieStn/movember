@@ -17,3 +17,10 @@ def user_profile(request):
 
     return render(request, 'profiles/profile.html', {'form': form})
 
+
+@login_required
+def toggle_facilitator_status(request):
+    profile = request.user.profile
+    profile.is_facilitator = not profile.is_facilitator
+    profile.save()
+    return redirect('profile')  # Redirect back to the profile page
