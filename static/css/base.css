@@ -122,5 +122,12 @@ footer a {
 
 /* -----------Login--------- */
 .login-container {
-    top: 16rem;
+    top: 18rem;
+}
+
+@media screen and (max-width:1200px) {
+    #login-image {
+        height: 45rem;
+        object-fit: cover;
+    }
 }
