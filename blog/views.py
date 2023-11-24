@@ -1,7 +1,31 @@
 from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.db.models import Q
 from .models import Blog
 from .forms import BlogForm, CommentForm
+
+
+def search_blogs(request, blogs):
+    """
+    A function to search blogs based on user input.
+    It accepts a request and a queryset of blogs,
+    and returns a filtered queryset.
+    """
+    query = request.GET.get('q')
+
+    if query:
+        queries = Q(title__icontains=query) | Q(
+            author__username__icontains=query) | Q(
+            interests__name__icontains=query)
+        blogs = blogs.filter(queries)
+
+        if not blogs.exists():
+            messages.warning(request, f"No results found for '{query}'.")
+        else:
+            messages.success(request, f"blogs found for '{query}'.")
+
+    return blogs
 
 
 @login_required
@@ -24,6 +48,10 @@ def blog_list(request):
     A view to render all the blogs on the blog page
     """
     blogs = Blog.objects.all()
+
+    if request.GET:
+        blogs = search_blogs(request, blogs)
+
     return render(request, 'blog/blog_list.html', {'blogs': blogs})
 
 
