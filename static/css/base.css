@@ -109,6 +109,7 @@ footer a {
 
 .header {
     background-color: var(--blue-grey);
+    height: 5rem;
 }
 
 .navigation-links {
@@ -118,6 +119,10 @@ footer a {
     margin-top: 10px;
 }
 
+#header-logo {
+    height: 4rem;
+    width: auto;
+}
 
 /* -----------Login--------- */
 
