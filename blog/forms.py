@@ -1,5 +1,5 @@
 from django import forms
-from .models import Blog, Interest
+from .models import Blog, Interest, Comment
 
 
 class BlogForm(forms.ModelForm):
@@ -28,3 +28,9 @@ class BlogForm(forms.ModelForm):
             blog.interests.add(interest)
 
         return blog
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('body',)

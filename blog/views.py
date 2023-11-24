@@ -1,7 +1,7 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, HttpResponseRedirect, render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from .models import Blog
-from .forms import BlogForm
+from .forms import BlogForm, CommentForm
 
 
 @login_required
@@ -29,14 +29,35 @@ def blog_list(request):
 
 @login_required
 def blog_detail(request, blog_id):
-    """
-    A view to display the blog detail when a user
-    clicks on it so they can be able to edit/delete
-    """
-    blog = get_object_or_404(Blog, pk=blog_id)
-    user = request.user
+    queryset = Blog.objects.all()
+    blog = get_object_or_404(queryset, pk=blog_id)
+    comments = blog.comments.filter(approved=True).order_by('created_on')
+    liked = False
 
-    return render(request, 'blog/blog_detail.html', {'blog': blog, 'user': user})
+    if request.user.is_authenticated and blog.likes.filter(id=request.user.id).exists():
+        liked = True
+
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.blog = blog
+            comment.save()
+        else:
+            comment_form = CommentForm()
+    else:
+        comment_form = CommentForm()
+
+    context = {
+        'blog': blog,
+        'comments': comments,
+        'commented': request.method == 'POST',
+        'liked': liked,
+        'comment_form': comment_form,
+        'blog_id': blog_id
+    }
+    return render(request, 'blog/blog_detail.html', context)
 
 
 @login_required
@@ -69,3 +90,16 @@ def delete_blog(request, blog_id):
         return redirect('blog_list')
 
     return render(request, 'blog/delete_blog.html', {'blog': blog})
+
+
+@login_required
+def blog_like(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+
+    if request.method == 'POST':
+        if blog.likes.filter(id=request.user.id).exists():
+            blog.likes.remove(request.user)
+        else:
+            blog.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse('blog_detail', args=[blog_id]))
