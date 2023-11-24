@@ -6,10 +6,10 @@
         <meta charset="UTF-8" />
         <!-- Favicon links, code copied from https://favicon.io/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.svg' %}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.svg' %}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.svg' %}">
-        <link rel="manifest" href="../static/favicon/site.webmanifest"> 
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch.svg' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/fav-32x32.svg' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/fav-16x16.svg' %}">
+        <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}"> 
         {% block extra_css %}  
 
         <link
@@ -33,6 +33,7 @@
     </head>
     <body>
         {% include 'includes/header.html' %}
+        <h1>Hello World</h1>
 
         <main>{% block content %} {% endblock %}</main>
 
