@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Blog Details</h2>
+<h2 class="pt-2 text-center">Blog Details</h2>
 
 {% if user.is_authenticated and blog.author == user %}
 <a href="{% url 'edit_blog' blog.id %}" class="btn btn-primary" aria-label="edit blog">Edit</a>
@@ -9,15 +9,15 @@
 {% endif %}
 
 
-<div class="container">
-    <div class="row g-0">
-        <div class="d-none d-md-block col-md-6">
+<div class="container-fluid">
+    <div class="row g-0 pt-3">
+        <div class=" col-12 col-md-6 d-flex justify-content-center">
             {% if blog.image %}
-            <img src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="max-width: 100%; max-height: 200px;">
+            <img class=" rounded" src="{{ blog.image.url }}" alt="{{ blog.title }} Image" style="max-width: 100%; max-height: 200px;">
             {% endif %}
         </div>
-        <div class="col-md-6">
-            <h3>{{ blog.title }}</h3>
+        <div class="col-12 col-md-6 text-center pt-5">
+            <h3 class="justify-content-center fw-bold">{{ blog.title }}</h3>
             <p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %} | {{ blog.created_at }}</p>
             <p>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
         </div>
@@ -34,9 +34,9 @@
                 </p>
                 <div class="row">
 
-                    <div class="col-1">
+                    <div class="col-12 col-md-6">
                         <strong>
-                        <span class="text-secondary"><p>Likes: {{ blog.likes_count }}</p></span>
+                        <span class="text-secondary text-nowrap"><p>Likes: {{ blog.likes_count }}</p></span>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'blog_like' blog_id %}" method="POST">
                                 {% csrf_token %}
@@ -51,7 +51,7 @@
                             {% endif %}
                         </strong>
                     </div>
-                    <div class="col-1">
+                    <div class="col-12 col-md-6">
                         <p>Comments:
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary">{{ total_comments }}</strong>
@@ -68,7 +68,7 @@
     </div>
     <div class="row">
         <div class="col-md-8 card mb-4  mt-3 ">
-            <h3 class="pt-2">Comments:</h3>
+            <h3 class="pt-4 fw-bold">Comments:</h3>
             <div class="card-body">
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
@@ -92,7 +92,7 @@
                 {% else %}
                 {% if user.is_authenticated %}
 
-                <h3>Leave a comment:</h3>
+                <h3 class="fw-bold">Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
