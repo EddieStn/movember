@@ -18,12 +18,8 @@
                 <!-- Additional Actions -->
                 <div class="mt-5">
                     {% if request.user.profile.is_facilitator %}
-                    <h2>Facilitator</h2>
-                    <p>Thank you for:</p>
-                    <ul>
-                        <li>Helping to foster a positive, inclusive vibe in the platform.</li>
-                        <li>Arranging get togethers</li>
-                    </ul>
+                    <h2 class="facilitator-thankyou">Facilitator</h2>
+                    <p>Thank you for helping to foster a positive, inclusive vibe in the platform and arranging get togethers.</p>
                     {% else %}
                     <button type="" class="btn btn-outline-light btn-lg call-to-action navigation-links">Request to be a facilitator</button>
                     {% endif %}

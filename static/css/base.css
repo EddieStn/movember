@@ -152,3 +152,9 @@ footer a {
         object-fit: cover;
     }
 }
+
+/* ---------Profile page-------- */
+
+.facilitator-thankyou {
+    color: var(--orange)
+}
