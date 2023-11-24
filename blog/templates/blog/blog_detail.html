@@ -3,10 +3,7 @@
 {% block content %}
 <h2 class="pt-2 text-center">Blog Details</h2>
 
-{% if user.is_authenticated and blog.author == user %}
-<a href="{% url 'edit_blog' blog.id %}" class="btn btn-primary" aria-label="edit blog">Edit</a>
-<a href="{% url 'delete_blog' blog.id %}" class="btn btn-danger" aria-label="delete blog">Delete</a>
-{% endif %}
+
 
 
 <div class="container-fluid">
@@ -20,6 +17,10 @@
             <h3 class="justify-content-center fw-bold">{{ blog.title }}</h3>
             <p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %} | {{ blog.created_at }}</p>
             <p>Interests: {% for interest in blog.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+            {% if user.is_authenticated and blog.author == user %}
+            <a href="{% url 'edit_blog' blog.id %}" class="btn btn-primary" aria-label="edit blog">Edit</a>
+            <a href="{% url 'delete_blog' blog.id %}" class="btn btn-danger" aria-label="delete blog">Delete</a>
+            {% endif %}
         </div>
     </div>
 </div>
