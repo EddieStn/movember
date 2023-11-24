@@ -16,42 +16,50 @@
         <p><strong>Organizer:</strong> {{ get_together.organizer.username }}</p>
     {% endif %}
 
-    <p>{{ get_together.category }}</p>
-    <p>{{ get_together.event_type }}</p>
+     <p>{{ get_together.category }}</p>
+     <p>{{ get_together.event_type }}</p>
 
+     <p><strong>Date:</strong> {{ get_together.date }}</p>
+     <p><strong>Time:</strong> {{ get_together.time }}</p>
+     <p><strong>Location:</strong> {{ get_together.location }}</p>
 
-    <p><strong>Date:</strong> {{ get_together.date }}</p>
-    <p><strong>Time:</strong> {{ get_together.time }}</p>
-    <p><strong>Location:</strong> {{ get_together.location }}</p>
+     <p>{{ get_together.description|safe}}</p>
 
-    <p>{{ get_together.description|safe}}</p>
+     <p><strong>Maximum Participants:</strong> {{ get_together.max_participants }}</p>
+     <p><strong>Signup Deadline:</strong> {{ get_together.signup_deadline }}</p>
 
-    <p><strong>Maximum Participants:</strong> {{ get_together.max_participants }}</p>
-    <p><strong>Signup Deadline:</strong> {{ get_together.signup_deadline }}</p>
+     <!-- List of registered participants: -->
+     <div>
+         <p>Community members who already registered: {{ get_together.participants.count }}</p>
+         <ul>
+             {% for participant in get_together.participants.all %}
+                 <li>
+                     {% if participant.profile.alias %}
+                     <p><strong></strong> {{ participant.profile.alias }}</p>
+                     {% else %}
+                         <p><strong></strong> {{ participant.username }}</p>
+                     {% endif %}
+                 </li>
+             {% endfor %}
+         </ul>
+     </div>
 
-    <!-- List of registered participants: -->
-    <div>
-        <p>Community members who already registered: {{ get_together.participants.count }}</p>
-        <ul>
-            {% for participant in get_together.participants.all %}
-                <li>
-                    {% if participant.profile.alias %}
-                    <p><strong></strong> {{ participant.profile.alias }}</p>
-                    {% else %}
-                        <p><strong></strong> {{ participant.username }}</p>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    {% if can_join and request.user != get_together.organizer %}
-        <form action="{% url 'register_for_get_together' get_together.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-primary">Join this Get Together</button>
-        </form>
+    <!-- CONDITIONAL RENDERING OF BUTTONS FOR PARTICIPANTS -->
+    {% if request.user != get_together.organizer %}
+        {% if request.user in get_together.participants.all %}
+            <form action="{% url 'withdraw_from_get_together' get_together.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-warning">Withdraw from this Get Together</button>
+            </form>
+        {% elif can_join %}
+            <form action="{% url 'register_for_get_together' get_together.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Join this Get Together</button>
+            </form>
+        {% endif %}
     {% endif %}
 
+    <!-- CONDITIONAL RENDERING OF BUTTONS FOR FACILITATORS -->
     <div>
         {% if request.user == get_together.organizer %}
             <a href="{% url 'edit_get_together' get_together.id %}" class="btn btn-secondary">Edit Get Together</a>

@@ -19,9 +19,13 @@ def get_together_list(request):
 @login_required
 def get_together_detail(request, get_together_id):
     get_together = get_object_or_404(GetTogether, pk=get_together_id)
-    can_join = (not request.user.profile.is_facilitator and
-                not get_together.is_full() and
-                get_together.signup_deadline > timezone.now())
+
+    can_join = request.user not in get_together.participants.all() and \
+               not get_together.is_full() and \
+               get_together.signup_deadline > timezone.now() and \
+               request.user != get_together.organizer
+    return render(request, 'get_together/get_together_detail.html',
+                  {'get_together': get_together, 'can_join': can_join})
 
     number_of_participants = get_together.participants.count()
     list_of_participants = get_together.participants.all()
@@ -76,7 +80,6 @@ def edit_get_together(request, get_together_id):
     return render(request, 'get_together/edit_get_together.html', {'form': form, 'get_together': get_together})
 
 
-
 @login_required
 @user_passes_test(is_facilitator)
 def delete_get_together(request, get_together_id):
@@ -100,3 +103,13 @@ def register_for_get_together(request, get_together_id):
             messages.error(request, "Sorry, this get together is full or the registration deadline has passed. Please try another event.")
             return redirect('get_together_list')
     return render(request, 'get_together/register_for_get_together.html', {'get_together': get_together})
+
+
+@login_required
+def withdraw_from_get_together(request, get_together_id):
+    get_together = get_object_or_404(GetTogether, pk=get_together_id)
+    if request.method == 'POST':
+        get_together.participants.remove(request.user)
+        messages.success(request, "You have successfully withdrawn from the event.")
+        return redirect('get_together_detail', get_together_id=get_together_id)
+    return render(request, 'get_together/withdraw_from_get_together.html', {'get_together': get_together})
