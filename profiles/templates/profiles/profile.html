@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %}
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 
 {% block content %}
@@ -17,11 +19,22 @@
                 </div>
                 <!-- Additional Actions -->
                 <div class="mt-5 mb-5">
-                    {% if request.user.profile.is_facilitator %}
-                    <h2 class="facilitator-thankyou">Facilitator</h2>
-                    <p>Thank you for helping to foster a positive, inclusive vibe in the platform and arranging get togethers.</p>
+                    {% if request.user.profile.is_facilitator and request.user.profile.is_facilitator_approved %}
+                        <h2 class="facilitator-thankyou">Facilitator</h2>
+                        <p>Thank you for helping to foster a positive, inclusive vibe in the platform and arranging get togethers.</p>
+
+                        <div>
+                            <p class="text-warning">Wish to take a break from facilitating?</p>
+                            <p><em>Contact us when you are ready to resume.</em></p>
+                            <!-- Change facilitator status -->
+                            <form action="{% url 'toggle_facilitator' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-light btn-lg">Pause Facilitator Status</button>
+                            </form>
+                        </div>
+
                     {% else %}
-                    <button type="" class="btn btn-outline-light btn-lg call-to-action navigation-links">Request to be a facilitator</button>
+                        <button type="" class="btn btn-outline-light btn-lg call-to-action navigation-links">Request to be a facilitator</button>
                     {% endif %}
                     <!-- Facilitator Application and Privacy Settings -->
                     <!-- Add more content here as per other requirements -->

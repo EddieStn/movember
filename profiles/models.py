@@ -20,6 +20,7 @@ class Profile(models.Model):
                               force_format='WEBP', blank=True)
     about_me = RichTextField(max_length=280, null=True, blank=True)
     is_facilitator = models.BooleanField(default=False)
+    is_facilitator_approved = models.BooleanField(default=False)
     show_alias = models.BooleanField(default=True)
 
     def __str__(self):

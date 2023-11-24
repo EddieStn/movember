@@ -11,6 +11,7 @@ class ProfileAdmin(admin.ModelAdmin):
         "image",
         "about_me",
         "is_facilitator",
+        'is_facilitator_approved',
         "show_alias",
     )
 

@@ -4,17 +4,17 @@
 {% block content %}
 <div class="container">
 
-    <!-- Please arrange these into "What, when, where, how" -->
-    <h1>{{ get_together.title }}</h1>
-    {% if get_together.image %}
-        <img src="{{ get_together.image.url }}" alt="{{ get_together.image_alt }}">
-    {% endif %}
+     <!-- Please arrange these into "What, when, where, how" -->
+     <h1>{{ get_together.title }}</h1>
+     {% if get_together.image %}
+         <img src="{{ get_together.image.url }}" alt="{{ get_together.image_alt }}">
+     {% endif %}
 
-    {% if get_together.organizer.profile.alias %}
-        <p><strong>Organizer:</strong> {{ get_together.organizer.profile.alias }}</p>
-    {% else %}
-        <p><strong>Organizer:</strong> {{ get_together.organizer.username }}</p>
-    {% endif %}
+     {% if get_together.organizer.profile.alias %}
+         <p><strong>Organizer:</strong> {{ get_together.organizer.profile.alias }}</p>
+     {% else %}
+         <p><strong>Organizer:</strong> {{ get_together.organizer.username }}</p>
+     {% endif %}
 
      <p>{{ get_together.category }}</p>
      <p>{{ get_together.event_type }}</p>
@@ -94,6 +94,5 @@
             </div>
         </div>
     </div>
-
 </div>
 {% endblock %}
