@@ -247,3 +247,21 @@ footer a {
     color: var(--orange);
     text-decoration: none;
 }
+
+/* ----------- Create Blog --------- */
+
+.create-blog-cont {
+    width: 40rem;
+    margin: 0 auto;
+}
+
+#new-blog-btn {
+    float: right;
+}
+
+@media screen and (max-width:800px) {
+    .create-blog-cont {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
