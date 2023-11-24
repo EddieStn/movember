@@ -11,13 +11,12 @@
 </div>
 
 <div class="search-bar">
-  <form class="form-inline w-100">
+  <form class="form-inline w-100" method="GET" action="">
     <div class="input-group w-100">
-      <input class="form-control" type="search" placeholder="&#128269; Search Blogs" aria-label="Search Blogs">
+      <input class="form-control" type="search" placeholder="&#128269; Search Blogs" name="q" aria-label="Search Blogs">
     </div>
   </form>
 </div>
-
 <div class="container-blogs">
   <div class="row">
     {% if blogs %}
