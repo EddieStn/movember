@@ -26,6 +26,10 @@
 /* Body */
 
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     background-color: var(--off-white);
@@ -83,6 +87,7 @@ img.logo {
 /* ----------Footer---------- */
 
 footer {
+    margin-top: auto;
     background-color: var(--blue-grey);
 }
 
@@ -104,6 +109,14 @@ footer a {
 .zoom-effect:hover img {
     transform: scale(1.1); 
   }
+
+  @media screen and (max-width:767px) {
+    .footer-images {
+        width: 4rem;
+        height: 4rem;
+    }
+     
+}
 
 /* ----------Header---------- */
 
