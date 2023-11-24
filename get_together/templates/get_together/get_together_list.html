@@ -8,7 +8,7 @@
 
 <div class="container d-flex flex-row flex-wrap justify-content-center mb-5">
     {% for get_together in get_togethers %}
-        <a href="{% url 'get_together_detail' get_together.id %}" class="recipes" aria-label="Click to view {{ get_together.title }}">
+        <a href="{% url 'get_together_detail' get_together.id %}" class="recipes text-decoration-none" aria-label="Click to view {{ get_together.title }}">
             <div class="card m-3" style="width: 18rem;">
                 <img src="{{ get_together.image.url }}" class="card-img-top" alt="{{ recipe.image_alt }}">
                 <div class="card-body">

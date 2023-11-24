@@ -19,12 +19,24 @@ def get_together_list(request):
 @login_required
 def get_together_detail(request, get_together_id):
     get_together = get_object_or_404(GetTogether, pk=get_together_id)
+
     can_join = request.user not in get_together.participants.all() and \
                not get_together.is_full() and \
                get_together.signup_deadline > timezone.now() and \
                request.user != get_together.organizer
     return render(request, 'get_together/get_together_detail.html',
                   {'get_together': get_together, 'can_join': can_join})
+
+    number_of_participants = get_together.participants.count()
+    list_of_participants = get_together.participants.all()
+
+    context = {
+        'get_together': get_together,
+        'can_join': can_join,
+        'number_of_participants': number_of_participants,
+        'list_of_participants': list_of_participants
+    }
+    return render(request, 'get_together/get_together_detail.html', context)
 
 
 @login_required
@@ -51,9 +63,12 @@ def create_get_together(request):
 
 
 @login_required
-@user_passes_test(is_facilitator)
 def edit_get_together(request, get_together_id):
     get_together = get_object_or_404(GetTogether, pk=get_together_id)
+    if request.user != get_together.organizer:
+        messages.error(request, "You are not authorized to edit this event.")
+        return redirect('get_together_detail', get_together_id=get_together_id)
+
     if request.method == 'POST':
         form = GetTogetherForm(request.POST, request.FILES, instance=get_together)
         if form.is_valid():

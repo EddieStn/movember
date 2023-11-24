@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 from pathlib import Path
 import os
 import dj_database_url
@@ -19,7 +21,7 @@ if os.path.isfile('env.py'):
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -30,16 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'movember1-bac9d403956e.herokuapp.com']
-
-# Application definition
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by email
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'movember1-bac9d403956e.herokuapp.com', '*.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -47,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'django.contrib.sites',
 
     # allauth
@@ -64,8 +59,6 @@ INSTALLED_APPS = [
      # Other
     'crispy_forms',
     'crispy_bootstrap5',
-    'cloudinary',
-    'cloudinary_storage',
     'djrichtextfield',
 ]
 
@@ -121,6 +114,15 @@ TEMPLATES = [
             ]
         },
     },
+]
+
+# Application definition
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'movember.wsgi.application'
@@ -185,15 +187,29 @@ LOGIN_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 
-STATIC_URL = 'static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+cloudinary.config( 
+  cloud_name = "duiyfy10a", 
+  api_key = "527288786513998", 
+  api_secret = "tVaPmUQOXfnsIyK4DQ-_sFUWuFI"
+)
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'duiyfy10a',
+    'API_KEY': '527288786513998',
+    'API_SECRET': 'tVaPmUQOXfnsIyK4DQ-_sFUWuFI'
+}
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # Cloudinary Settings
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
