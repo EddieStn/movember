@@ -123,7 +123,11 @@ footer a {
     height: 4rem;
     width: auto;
 }
-
+/* ---------- About Page ---------- */
+#about-image{
+    max-width: 100%;
+    height: auto;
+}
 /* -----------Login--------- */
 
 .login-container {
