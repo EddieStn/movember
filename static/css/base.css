@@ -220,10 +220,17 @@ footer a {
 /* ----------- Create Blog --------- */
 
 .create-blog-cont {
-    width: 30rem;
+    width: 40rem;
     margin: 0 auto;
 }
 
 #new-blog-btn {
     float: right;
+}
+
+@media screen and (max-width:800px) {
+    .create-blog-cont {
+        width: 90%;
+        margin: 0 auto;
+    }
 }
