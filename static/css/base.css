@@ -175,3 +175,27 @@ footer a {
         width: 20rem;
     }
 }
+
+
+/* ----------- Blog list --------- */
+
+.search-bar {
+    width: 20rem;
+    float: right;
+    margin-right: 2rem;
+}
+
+.container-blogs {
+    width: 100%;
+    display: grid;
+    padding: 2rem;
+}
+
+#to-post-button {
+    float: right;
+}
+
+.blog-title {
+    color: var(--orange);
+    text-decoration: none;
+}
