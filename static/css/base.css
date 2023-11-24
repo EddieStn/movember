@@ -216,3 +216,14 @@ footer a {
     color: var(--orange);
     text-decoration: none;
 }
+
+/* ----------- Create Blog --------- */
+
+.create-blog-cont {
+    width: 30rem;
+    margin: 0 auto;
+}
+
+#new-blog-btn {
+    float: right;
+}
