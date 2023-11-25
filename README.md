@@ -289,6 +289,184 @@ Agile values and principles have been followed in the creation of this project. 
 
 ### Existing Features
 
+The existing features provide the following project requirements:
+
+### Project Name
+[image of project]
+
+The project name is displayed consistently at the top of all three pages.
+
+### Footer
+[image of long]
+[image of short]
+
+The footer is displayed at the bottom of all pages. It has been styled to be sticky. All footer links open in a new tab
+
+The footer includes:
+- Photo of every team member
+- LinkedIn profile of every team member
+- The purpose of the website
+
+### Landing page
+
+There are two landing pages. One is before login and one is after login.
+
+#### Landing page (Before Login)
+[image of before]
+
+#### Landing page (After Login)
+[image of after]
+
+The landing page includes:
+- A short introductory paragraph of BroBonds
+- A short slogan to call
+- Static image of Hero image for welcome
+- Clearly visible buttons to access the signup page
+- 3 cards present ‘Latest Blog’, ‘Popular Blog’ & ‘Latest Event’
+
+### Sign-up page
+[image of signup]
+
+The sign-up includes:
+- A short paragraph of declaration to confirm users are 18 years old or above
+- A clear link will refer to login page if users have their account.
+- A field for users to fill their email address
+
+- A field for users to setup their username (The name show on blog and event)
+- A field for users to setup their password
+- A field for users to fill their preset password for validation
+- Clearly visible buttons to submit the signup form
+
+### Favicon and page titles
+[image of favicon]
+
+A favicon has been included and each page has a different title.
+
+### About us page
+[image of about]
+
+The About us page includes:
+- 3 paragraphs to introduce BroBonds
+- Static image of mens talk
+
+### FAQ page
+[image of faq]
+
+TheFAQ  page includes:
+- 6 paragraphs to explain questions asked frequently by user
+
+
+### Log in page
+[image of log in]
+
+The Log in page includes:
+- A clear link will refer to sign up page if users need to sign up their account.
+- A field for users to fill their user name
+- A field for users to fill their password
+- A checkbox to memorize the user log in data
+- Clearly visible buttons to submit the form then direct to landing page after log in
+
+### Password reset page
+[image of password reset]
+
+The Password reset page includes:
+- A field for users to fill their email address
+- Clearly visible buttons to submit the form then password reset email will be sent to corresponding email address
+
+### After user log in
+
+### My Profile page
+[image of my profile]
+
+The my profile page includes:
+- A user profile image
+- User alias to display if they want to be anonymous
+- Image file upload for the user profile image
+- A field for users to fill their about me information 
+- Check to decide to be anonymous (tick = anonymous)
+- Clearly visible buttons to submit the form
+
+### Blog list page
+[image of blog list]
+
+The blog list page includes:
+- Clearly visible buttons to create the blog
+- A search function field to search blog with keyword
+- Blogs showing detail as below
+- Blog title
+- Author
+- Content
+- Create time
+- Number of Like
+- Number of Comments
+- List of interests
+- Clearly visible buttons to view the entire blog
+
+### Blog page
+[image of blog]
+
+The blog page includes:
+- Static image of the blog
+- Blog title
+- Author & create time
+- List of interests
+- Content of the blog
+- Number of Like and comments
+- Clearly visible buttons to like the blog
+- Comments section if users leave comment and it will show
+- Leave comment section with the name of posting and comment
+- Clearly visible buttons to submit the blog
+
+### Create Blog page
+[image of create blog]
+
+The create blog page includes:
+- A field for users to fill the title of the blog
+- A field for users to fill the content of the blog
+- A field for users to fill the interests related to the blog
+- A field for users to upload the image related to the blog
+- Clearly visible buttons to submit the blog
+
+### Get Together
+### Event list page
+[image of event list]
+
+The create blog page includes:
+- Event title
+- Image of the event
+- Organizer
+- Categorry of interests
+- Event type: Face to Face / Hybird / Virtual
+- Event date
+- Event time
+- Location
+- Description
+- Maximum Participants
+- Signup Deadline
+- Community members who already registered
+- Clearly visible buttons to join the event
+
+### Create event page
+[image of create event]
+
+The create blog page includes:
+User can fill detail below
+- Event title
+- Categorry of existing interests
+- Categorry of new interests
+- Image of the event
+- Organizer
+- Event type: Face to Face / Hybird / Virtual
+- Event date
+- Event time
+- Location
+- Description
+- Maximum Participants
+- Signup Deadline
+- Community members who already registered
+- Clearly visible buttons to join the event
+
+
 [Return to contents list](#contents)
 
 
