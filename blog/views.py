@@ -34,8 +34,12 @@ def create_blog(request):
         form = BlogForm(request.POST, request.FILES)
         if form.is_valid():
             author = request.user if request.user.is_authenticated else None
-            blog = form.save(commit=True, author=author)
+            form.save(commit=True, author=author)
+            messages.success(request, 'Successfully created blog!')
             return redirect('blog_list')
+        else:
+            messages.error(request, 'Failed to create blog. \
+            Please ensure the form is valid.')
     else:
         form = BlogForm()
 
@@ -72,8 +76,11 @@ def blog_detail(request, blog_id):
             comment = comment_form.save(commit=False)
             comment.blog = blog
             comment.save()
+            messages.success(request, 'Comment submitted!')
         else:
             comment_form = CommentForm()
+            messages.error(request,
+                           'Update failed. Please ensure the form is valid.')
     else:
         comment_form = CommentForm()
 
@@ -90,6 +97,8 @@ def blog_detail(request, blog_id):
 
 @login_required
 def edit_blog(request, blog_id):
+    """Edit a blog you created"""
+
     blog = get_object_or_404(Blog, pk=blog_id)
 
     if blog.author != request.user:
@@ -99,7 +108,11 @@ def edit_blog(request, blog_id):
         form = BlogForm(request.POST, request.FILES, instance=blog)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Blog Editted!')
             return redirect('blog_list')
+        else:
+            messages.error(request, 'Failed to edit blog.\
+            Please ensure the form is valid.')
     else:
         form = BlogForm(instance=blog)
 
@@ -115,6 +128,7 @@ def delete_blog(request, blog_id):
 
     if request.method == 'POST':
         blog.delete()
+        messages.success(request, 'Product deleted!')
         return redirect('blog_list')
 
     return render(request, 'blog/delete_blog.html', {'blog': blog})
