@@ -15,7 +15,7 @@ Developed by Team!Alone:
 
 Image showcasing project to go here
 
-
+<img src="documentation/readme-images/techsini.png">
 
 Live link: https://movember1-bac9d403956e.herokuapp.com/
 
@@ -679,6 +679,12 @@ These tools and packages collectively contributed to the successful development 
 
 
 ## Testing and Validation
+
+### responsivness testing
+
+### About section
+<img src="documentation/readme-images/desktop-about.png">
+<img src="documentation/readme-images/techsini.png">
 
 [Return to contents list](#contents)
 
