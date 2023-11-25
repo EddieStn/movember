@@ -3,9 +3,6 @@
 {% block content %}
 <h2 class="pt-2 text-center">Blog Details</h2>
 
-
-
-
 <div class="container-fluid">
     <div class="row g-0 pt-3">
         <div class=" col-12 col-md-6 d-flex justify-content-center">
@@ -25,14 +22,11 @@
     </div>
 </div>
 
-
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
-                <p class="card-text ">
-                    {{ blog.content | safe }}
-                </p>
+                <p class="card-text">{{ blog.content|safe }}</p>
                 <div class="row">
 
                     <div class="col-12 col-md-6">
@@ -54,9 +48,10 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <p>Comments:
-                        {% with comments.count as total_comments %}
-                        <strong class="text-secondary">{{ total_comments }}</strong>
-                        {% endwith %}</p>
+                            {% with comments.count as total_comments %}
+                            <strong class="text-secondary">{{ total_comments }}</strong>
+                            {% endwith %}
+                        </p>
                     </div>
                 </div>
             </div>
