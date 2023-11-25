@@ -24,8 +24,6 @@ def get_together_detail(request, get_together_id):
                not get_together.is_full() and \
                get_together.signup_deadline > timezone.now() and \
                request.user != get_together.organizer
-    return render(request, 'get_together/get_together_detail.html',
-                  {'get_together': get_together, 'can_join': can_join})
 
     number_of_participants = get_together.participants.count()
     list_of_participants = get_together.participants.all()
@@ -36,6 +34,7 @@ def get_together_detail(request, get_together_id):
         'number_of_participants': number_of_participants,
         'list_of_participants': list_of_participants
     }
+
     return render(request, 'get_together/get_together_detail.html', context)
 
 
@@ -55,7 +54,7 @@ def create_get_together(request):
             get_together.organizer = request.user
             get_together.save()
             form.save_m2m()  # Save many-to-many data
-            messages.success(request, "Get Together created successfully.")
+            messages.success(request, "Get Together event created successfully.")
             return redirect('get_together_detail', get_together.id)
     else:
         form = GetTogetherForm()
@@ -73,7 +72,7 @@ def edit_get_together(request, get_together_id):
         form = GetTogetherForm(request.POST, request.FILES, instance=get_together)
         if form.is_valid():
             form.save()
-            messages.success(request, "Get Together updated successfully.")
+            messages.success(request, "Get Together event updated successfully.")
             return redirect('get_together_detail', get_together_id=get_together_id)
     else:
         form = GetTogetherForm(instance=get_together)
@@ -86,7 +85,7 @@ def delete_get_together(request, get_together_id):
     get_together = get_object_or_404(GetTogether, pk=get_together_id)
     if request.method == 'POST':
         get_together.delete()
-        messages.success(request, "Get Together deleted successfully.")
+        messages.success(request, "Get Together event deleted successfully.")
         return redirect('get_together_list')
     return render(request, 'get_together/delete_get_together.html', {'get_together': get_together})
 
