@@ -2,59 +2,65 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+<div>
+    <h1 class="text-center mt-4">{{ get_together.title }}</h1>
+    <hr>
+</div>
 
-     <!-- Please arrange these into "What, when, where, how" -->
-     <h1>{{ get_together.title }}</h1>
-     {% if get_together.image %}
-         <img src="{{ get_together.image.url }}" alt="{{ get_together.image_alt }}">
-     {% endif %}
+<div class="container bg-light shadow">
+    <div class="row">
+        <div class="col-md-6 mt-4">
+            {% if get_together.image %}
+            <img src="{{ get_together.image.url }}" alt="{{ get_together.image_alt }}">
+            {% endif %}
+        </div>
+        <div class="col-md-6 mt-4">
+            {% if get_together.organizer.profile.alias %}
+            <p><strong>Organizer:</strong> {{ get_together.organizer.profile.alias }}</p>
+            {% else %}
+            <p><strong>Organizer:</strong> {{ get_together.organizer.username }}</p>
+            {% endif %}
+            <p><strong>Catagory:</strong> {{ get_together.category }}</p>
+            <p><strong>Event Type:</strong> {{ get_together.event_type }}</p> 
+            <p><strong>Date:</strong> {{ get_together.date }}</p>
+            <p><strong>Time:</strong> {{ get_together.time }}</p>
+            <p><strong>Location:</strong> {{ get_together.location }}</p>
+        </div>
+    </div>
+    <div class="row m-3">
+        <p>{{ get_together.description|safe}}</p>
 
-     {% if get_together.organizer.profile.alias %}
-         <p><strong>Organizer:</strong> {{ get_together.organizer.profile.alias }}</p>
-     {% else %}
-         <p><strong>Organizer:</strong> {{ get_together.organizer.username }}</p>
-     {% endif %}
+        <p><strong>Maximum Participants:</strong> {{ get_together.max_participants }}</p>
+        <p><strong>Signup Deadline:</strong> {{ get_together.signup_deadline }}</p>
 
-     <p>{{ get_together.category }}</p>
-     <p>{{ get_together.event_type }}</p>
-
-     <p><strong>Date:</strong> {{ get_together.date }}</p>
-     <p><strong>Time:</strong> {{ get_together.time }}</p>
-     <p><strong>Location:</strong> {{ get_together.location }}</p>
-
-     <p>{{ get_together.description|safe}}</p>
-
-     <p><strong>Maximum Participants:</strong> {{ get_together.max_participants }}</p>
-     <p><strong>Signup Deadline:</strong> {{ get_together.signup_deadline }}</p>
-
-     <!-- List of registered participants: -->
-     <div>
-         <p>Community members who already registered: {{ get_together.participants.count }}</p>
-         <ul>
-             {% for participant in get_together.participants.all %}
-                 <li>
-                     {% if participant.profile.alias %}
-                     <p><strong></strong> {{ participant.profile.alias }}</p>
-                     {% else %}
-                         <p><strong></strong> {{ participant.username }}</p>
-                     {% endif %}
-                 </li>
-             {% endfor %}
-         </ul>
-     </div>
-
+        <!-- List of registered participants: -->
+        <div>
+            <p>Community members who already registered: {{ get_together.participants.count }}</p>
+            <ul>
+                {% for participant in get_together.participants.all %}
+                    <li>
+                        {% if participant.profile.alias %}
+                        <p><strong></strong> {{ participant.profile.alias }}</p>
+                        {% else %}
+                            <p><strong></strong> {{ participant.username }}</p>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="mb-4">
     <!-- CONDITIONAL RENDERING OF BUTTONS FOR PARTICIPANTS -->
     {% if request.user != get_together.organizer %}
         {% if request.user in get_together.participants.all %}
             <form action="{% url 'withdraw_from_get_together' get_together.id %}" method="post">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-warning">Withdraw from this Get Together</button>
+                <button type="submit" class="btn btn-warning m-3">Withdraw from this Get Together</button>
             </form>
         {% elif can_join %}
             <form action="{% url 'register_for_get_together' get_together.id %}" method="post">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-primary">Join this Get Together</button>
+                <button type="submit" class="btn btn-warning m-3">Join this Get Together</button>
             </form>
         {% endif %}
     {% endif %}
@@ -68,7 +74,7 @@
 
     <!-- Delete Button -->
     {% if request.user == get_together.organizer %}
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+        <button type="button" class="btn btn-danger m-3" data-bs-toggle="modal" data-bs-target="#deleteModal">
             Delete Event
         </button>
     {% endif %}
@@ -96,3 +102,4 @@
     </div>
 </div>
 {% endblock %}
+
