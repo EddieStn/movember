@@ -33,6 +33,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = False
 
+X_FRAME_OPTIONS = 'ALLOW-FROM https://amiresponsive.co.uk/ https://responsivedesignchecker.com/ https://techsini.com/multi-mockup/'
+
+
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'movember1-bac9d403956e.herokuapp.com', '*.herokuapp.com']
 
 INSTALLED_APPS = [
