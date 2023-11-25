@@ -82,7 +82,8 @@ def blog_detail(request, blog_id):
             comment = comment_form.save(commit=False)
             comment.blog = blog
             comment.save()
-            messages.success(request, 'Comment submitted!')
+            messages.success(request, 'Comment submitted! Please wait for approval.')
+            return redirect('blog_detail', blog_id=blog_id)
         else:
             comment_form = CommentForm()
             messages.error(request,
