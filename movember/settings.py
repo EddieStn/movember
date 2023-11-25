@@ -191,6 +191,7 @@ LOGIN_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+API_SECRET = os.environ.get('tVaPmUQOXfnsIyK4DQ-_sFUWuFI')
 
 cloudinary.config(
   cloud_name = "duiyfy10a",
