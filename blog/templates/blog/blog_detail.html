@@ -37,26 +37,27 @@
 
                     <div class="col-12 col-md-6">
                         <strong>
-                        <span class="text-secondary text-nowrap"><p>Likes: {{ blog.likes_count }}</p></span>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'blog_like' blog_id %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{blog_id}}"><i class="fas fa-heart"></i>Dislike</button>
+                                <button type="submit" class="p-1" name="blogpost_id" value="{{blog_id}}"><i class="fas fa-heart"></i>Dislike</button>
                                 {% else %}
-                                <button type="submit" name="blogpost_id" value="{{blog_id}}"><i class="far fa-heart"></i>Like</button>
+                                <button type="submit" class="p-1" name="blogpost_id" value="{{blog_id}}"><i class="far fa-heart"></i>Like</button>
                                 {% endif %}
                             </form>
                             {% else %}
                             <span class="text-secondary"><i class="far fa-heart"></i></span>
                             {% endif %}
+                        <span class="text-secondary"><p>{{ blog.likes_count }} <i class="fas fa-heart"></i></p></span>
                         </strong>
                     </div>
                     <div class="col-12 col-md-6">
-                        <p>Comments:
                         {% with comments.count as total_comments %}
-                        <strong class="text-secondary">{{ total_comments }}</strong>
-                        {% endwith %}</p>
+                        <strong class="text-secondary"><i class="far fa-comments"></i>
+                            <!-- Our total_comments variable goes before the closing strong tag -->
+                            {{ total_comments }}</strong>
+                        {% endwith %}
                     </div>
                 </div>
             </div>
@@ -68,22 +69,26 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
+        <div class="col-md-8 card mb-4 mt-3">
             <h3 class="pt-4 fw-bold">Comments:</h3>
             <div class="card-body">
-                {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
-                        {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
-                            {{ comment.created_on }}
-                        </span> wrote:
-                    </p>
-                    {{ comment.body | linebreaks }}
-                </div>
-                {% endfor %}
+                {% if comments %}
+                    {% for comment in comments %}
+                        <div class="comments" style="padding: 10px;">
+                            <p class="font-weight-bold">
+                                {{ comment.name }}
+                                <span class="text-muted font-weight-normal">
+                                    {{ comment.created_on }}
+                                </span> wrote:
+                            </p>
+                            {{ comment.body | linebreaks }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Be the first to leave a comment.</p>
+                {% endif %}
             </div>
-        </div>
+        </div>        
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 {% if commented %}
@@ -98,7 +103,7 @@
                 <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-light btn-lg call-to-action">Submit</button>
+                    <button type="submit" class="btn btn-outline-light btn-lg call-to-action text-dark">Submit</button>
                 </form>
                 {% endif %}
                 {% endif %}
