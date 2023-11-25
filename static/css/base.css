@@ -87,6 +87,7 @@ img.logo {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    z-index: -2;
 }
 
 .hero-text, .hero-subtext {
@@ -184,6 +185,17 @@ footer a {
     height: 4rem;
     width: auto;
 }
+.navbar-collapse {
+    z-index: 500;
+     
+}
+
+.account-dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* ---------- About Page ---------- */
 #about-image{
     max-width: 100%;
