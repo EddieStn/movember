@@ -14,8 +14,8 @@
         </button>
 
         <!-- Navigation Items -->
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms ms-auto">
+        <div class="collapse navbar-collapse ms-auto" id="navbarNavDropdown">
+            <ul class="navbar-nav ms ms-auto float-end">
 
                 <!-- Home -->
                 <li class="nav-item">
@@ -49,7 +49,7 @@
 
                 {% else %}
                     <li class="nav-item">
-                        <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'about' %}">About us</a>
+                        <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'about' %}">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'faq' %}">FAQ</a>
@@ -63,8 +63,8 @@
                         My Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userMenuDropdown">
-                        <li><a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'profile' %}">My Profile</a></li>
-                        <li><a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'account_logout' %}">Logout</a></li>
+                        <li class="account-dropdown"><a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'profile' %}">My Profile</a></li>
+                        <li class="account-dropdown"><a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'account_logout' %}">Logout</a></li>
                     </ul>
                 </li>
                 {% else %}
