@@ -423,10 +423,10 @@ The footer includes:
 There are two landing pages. One is before login and one is after login.
 
 #### Landing page (Before Login)
-[image of before]
+<img src="documentation\readme-images\land-before.png">
 
 #### Landing page (After Login)
-[image of after]
+<img src="documentation\readme-images\land-after.png">
 
 The landing page includes:
 - A short introductory paragraph of BroBonds
@@ -545,7 +545,7 @@ The create blog page includes:
 
 ### Get Together
 ### Event list page
-[image of event list]
+<img src="">
 
 The create blog page includes:
 - Event title
@@ -563,7 +563,7 @@ The create blog page includes:
 - Clearly visible buttons to join the event
 
 ### Create event page
-[image of create event]
+<img src="">
 
 The create blog page includes:
 User can fill detail below
