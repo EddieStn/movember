@@ -1,10 +1,16 @@
 # BroBonds
 Developed by Team!Alone:
+
 [Joy Zadan](https://github.com/JoyZadan)
+
 [Eduard Viorel Stan](https://github.com/EddieStn)
+
 [Georgina Carlisle](https://github.com/GeorginaCarlisle)
+
 [Radleigh Smith](https://github.com/RadleighSmith)
+
 [Callum Jepps](https://github.com/CJepps)
+
 [Edison Kwan](https://github.com/edisonkwan18)
 
 Image showcasing project to go here
@@ -394,13 +400,16 @@ Agile values and principles have been followed in the creation of this project. 
 The existing features provide the following project requirements:
 
 ### Project Name
-[image of project]
+<img src="documentation\readme-images\project-name.png">
 
 The project name is displayed consistently at the top of all three pages.
 
 ### Footer
-[image of long]
-[image of short]
+#### Footer in laptop view
+<img src="documentation\readme-images\footer.png">
+
+#### Footer in mobile view
+<img src="documentation\readme-images\mob-footer.png">
 
 The footer is displayed at the bottom of all pages. It has been styled to be sticky. All footer links open in a new tab
 
@@ -414,10 +423,10 @@ The footer includes:
 There are two landing pages. One is before login and one is after login.
 
 #### Landing page (Before Login)
-[image of before]
+<img src="documentation\readme-images\land-before.png">
 
 #### Landing page (After Login)
-[image of after]
+<img src="documentation\readme-images\land-after.png">
 
 The landing page includes:
 - A short introductory paragraph of BroBonds
@@ -427,39 +436,38 @@ The landing page includes:
 - 3 cards present ‘Latest Blog’, ‘Popular Blog’ & ‘Latest Event’
 
 ### Sign-up page
-[image of signup]
+<img src="documentation\readme-images\sign-up.png">
 
 The sign-up includes:
 - A short paragraph of declaration to confirm users are 18 years old or above
 - A clear link will refer to login page if users have their account.
 - A field for users to fill their email address
-
-- A field for users to setup their username (The name show on blog and event)
+- A field for users to setup their username (The name shows on blog and event)
 - A field for users to setup their password
 - A field for users to fill their preset password for validation
 - Clearly visible buttons to submit the signup form
 
 ### Favicon and page titles
-[image of favicon]
+<img src="documentation\readme-images\favicon.png">
 
-A favicon has been included and each page has a different title.
+A favicon has been included and each page has a title of my app name \"BroBonds\".
 
 ### About us page
-[image of about]
+<img src="documentation\readme-images\about-us.png">
 
 The About us page includes:
 - 3 paragraphs to introduce BroBonds
 - Static image of mens talk
 
 ### FAQ page
-[image of faq]
+<img src="documentation\readme-images\faq.png">
 
 TheFAQ  page includes:
 - 6 paragraphs to explain questions asked frequently by user
 
 
 ### Log in page
-[image of log in]
+<img src="documentation\readme-images\log-in.png">
 
 The Log in page includes:
 - A clear link will refer to sign up page if users need to sign up their account.
@@ -468,17 +476,10 @@ The Log in page includes:
 - A checkbox to memorize the user log in data
 - Clearly visible buttons to submit the form then direct to landing page after log in
 
-### Password reset page
-[image of password reset]
-
-The Password reset page includes:
-- A field for users to fill their email address
-- Clearly visible buttons to submit the form then password reset email will be sent to corresponding email address
-
 ### After user log in
 
-### My Profile page
-[image of my profile]
+### My Profile page (Normal user)
+<img src="documentation\readme-images\profile-nonfac.png">
 
 The my profile page includes:
 - A user profile image
@@ -486,10 +487,23 @@ The my profile page includes:
 - Image file upload for the user profile image
 - A field for users to fill their about me information 
 - Check to decide to be anonymous (tick = anonymous)
+- Clearly visible buttons to submit the request to be a facilitator and wait for decision of admin
+- Clearly visible buttons to submit the form
+
+### My Profile page (Facilitator)
+<img src="documentation\readme-images\profile-fac.png">
+
+The my profile page includes:
+- A user profile image
+- User alias to display if they want to be anonymous
+- Image file upload for the user profile image
+- A field for users to fill their about me information 
+- A paragraph of statement of your status as a facilitator
+- Clearly visible buttons to submit the request to be a facilitator and wait for decision of admin
 - Clearly visible buttons to submit the form
 
 ### Blog list page
-[image of blog list]
+<img src="documentation\readme-images\blog-list.png">
 
 The blog list page includes:
 - Clearly visible buttons to create the blog
@@ -505,7 +519,7 @@ The blog list page includes:
 - Clearly visible buttons to view the entire blog
 
 ### Blog page
-[image of blog]
+<img src="documentation\readme-images\blog.png">
 
 The blog page includes:
 - Static image of the blog
@@ -520,7 +534,7 @@ The blog page includes:
 - Clearly visible buttons to submit the blog
 
 ### Create Blog page
-[image of create blog]
+<img src="documentation\readme-images\create-blog.png">
 
 The create blog page includes:
 - A field for users to fill the title of the blog
@@ -531,7 +545,7 @@ The create blog page includes:
 
 ### Get Together
 ### Event list page
-[image of event list]
+<img src="">
 
 The create blog page includes:
 - Event title
@@ -549,7 +563,7 @@ The create blog page includes:
 - Clearly visible buttons to join the event
 
 ### Create event page
-[image of create event]
+<img src="">
 
 The create blog page includes:
 User can fill detail below
@@ -567,6 +581,14 @@ User can fill detail below
 - Signup Deadline
 - Community members who already registered
 - Clearly visible buttons to join the event
+
+### Log out page
+<img src="documentation\readme-images\logout.png">
+
+The log out page includes:
+User can fill detail below
+- a description to gudie user to return home
+- Clearly visible buttons to return home
 
 
 [Return to contents list](#contents)
