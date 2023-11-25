@@ -21,6 +21,10 @@
         />
         <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
         {% endblock %} {% block onload_js%}
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        </script>
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"
             integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A=="
@@ -32,10 +36,36 @@
         <title>MOvember {% block title %} {% endblock %}</title>
     </head>
     <body>
+        
+        {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+        {% endif %}
         {% include 'includes/header.html' %}
-
-        <main>{% block content %} {% endblock %}</main>
+        <main>
+        {% block content %} 
+        {% endblock %}
+        </main>
 
         {% include 'includes/footer.html' %} {% block extra_js %} {% endblock %}
+        {% block postloadjs %}
+        <script type="text/javascript">
+            $('.toast').toast('show');
+        </script>
+        {% endblock %}
+
     </body>
 </html>

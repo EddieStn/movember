@@ -30,12 +30,19 @@ def search_blogs(request, blogs):
 
 @login_required
 def create_blog(request):
+    """
+    A view to create a blog
+    """
     if request.method == 'POST':
         form = BlogForm(request.POST, request.FILES)
         if form.is_valid():
             author = request.user if request.user.is_authenticated else None
-            blog = form.save(commit=True, author=author)
+            form.save(commit=True, author=author)
+            messages.success(request, 'Successfully created blog!')
             return redirect('blog_list')
+        else:
+            messages.error(request, 'Failed to create blog. \
+            Please ensure the form is valid.')
     else:
         form = BlogForm()
 
@@ -57,6 +64,9 @@ def blog_list(request):
 
 @login_required
 def blog_detail(request, blog_id):
+    """
+    A view to show an individual blog details
+    """
     queryset = Blog.objects.all()
     blog = get_object_or_404(queryset, pk=blog_id)
     comments = blog.comments.filter(approved=True).order_by('created_on')
@@ -72,8 +82,11 @@ def blog_detail(request, blog_id):
             comment = comment_form.save(commit=False)
             comment.blog = blog
             comment.save()
+            messages.success(request, 'Comment submitted!')
         else:
             comment_form = CommentForm()
+            messages.error(request,
+                           'Update failed. Please ensure the form is valid.')
     else:
         comment_form = CommentForm()
 
@@ -90,6 +103,8 @@ def blog_detail(request, blog_id):
 
 @login_required
 def edit_blog(request, blog_id):
+    """Edit a blog you created"""
+
     blog = get_object_or_404(Blog, pk=blog_id)
 
     if blog.author != request.user:
@@ -99,7 +114,11 @@ def edit_blog(request, blog_id):
         form = BlogForm(request.POST, request.FILES, instance=blog)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Blog Editted!')
             return redirect('blog_list')
+        else:
+            messages.error(request, 'Failed to edit blog.\
+            Please ensure the form is valid.')
     else:
         form = BlogForm(instance=blog)
 
@@ -108,6 +127,7 @@ def edit_blog(request, blog_id):
 
 @login_required
 def delete_blog(request, blog_id):
+    """Delete a blog you created"""
     blog = get_object_or_404(Blog, pk=blog_id)
 
     if blog.author != request.user:
@@ -115,6 +135,7 @@ def delete_blog(request, blog_id):
 
     if request.method == 'POST':
         blog.delete()
+        messages.success(request, 'Product deleted!')
         return redirect('blog_list')
 
     return render(request, 'blog/delete_blog.html', {'blog': blog})
@@ -122,6 +143,7 @@ def delete_blog(request, blog_id):
 
 @login_required
 def blog_like(request, blog_id):
+    """Like other blogs"""
     blog = get_object_or_404(Blog, pk=blog_id)
 
     if request.method == 'POST':
