@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="container mb-5 mt-4">
+    <div class="row justify-content-center text-left">
+        <div class="col col-12 col-lg-8 align-self-start p-4">
+            <!-- PAGE HEADING -->
+            <h2 class=""><span class="">Apply to become a facilitator</span></h2>
+            <p>Are you ready to join our community? We would love to hear from you!</p>
+            <!-- FACILITATOR SIGNUP FORM -->
+            <div>
+                <!-- Contact form -->
+                <form class="mt-3" action="{% url 'contact' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    <!-- Render form fields using crispy forms -->
+                    {{ form|crispy }}
+                    <!-- Submit button -->
+                    <button class="btn btn-primary">Submit</button>
+                    <a class="btn btn-secondary" href="/">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
