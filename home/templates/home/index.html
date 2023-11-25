@@ -11,9 +11,28 @@
   <div class="d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle text-white text-center w-75">
       <!-- Hero text -->
       <div class="bg-dark bg-opacity-75 p-4 rounded">
-          <h1 class="hero-text">Share your story with others!</h1>
-          <h4 class="hero-subtext">Join the community and inspire others</h4>
-          <a class="btn btn-outline-light call-to-action" href="{% url 'account_signup' %}" role="button">Join us now</a>
+          {% if request.user.is_authenticated %}
+              <p class="hero-text h1">Thanks for joining us!</p>
+              <p class="hero-text h1">If you've been here before, welcome back!</p>
+              <p class="hero-subtext h4">Do checkout the latest blogs and events.</p>
+              <div class="container d-flex justify-content-center align-items-center">
+                <div class="mx-2">
+                  <a class="btn btn-warning" href="{% url 'blog_list' %}" role="button">Latest blogs</a>
+                </div>
+                <div class="mx-2">
+                  <a class="btn btn-warning" href="{% url 'get_together_list' %}" role="button">Latest get togethers</a>
+                </div>
+              </div>
+          {% else %}
+              <h1 class="hero-text">
+                  "When the gap is too great, step by step the impossible becomes achievable.
+                  Supporting men across the chasm from loneliness to connection, friendship and belonging,
+                  through shared interests."
+              </h1>
+              <h4 class="hero-subtext">Join the community and inspire others</h4>
+              <a class="btn btn-outline-light call-to-action" href="{% url 'account_signup' %}" role="button">Join us now</a>
+          {% endif %}
+
       </div>
   </div>
 </div>
@@ -24,16 +43,16 @@
     <div class="about-section bg-dark-blue text-white p-4 rounded text-center">
         <h2>Welcome To BroBonds</h2>
         <p>
-        BroBonds a digital haven designed to bridge the gap between isolation and connection. 
-        We're a dedicated team committed to reshaping the narrative around men's mental health by fostering an environment 
-        that encourages genuine connections. At BroBonds, we understand the challenges of loneliness and the impact it has 
-        on mental well-being. Our platform offers a diverse range of opportunities, from engaging with insightful blogs that 
-        resonate with personal experiences to participating in engaging online and in-person events curated to spark 
+        BroBonds a digital haven designed to bridge the gap between isolation and connection.
+        We're a dedicated team committed to reshaping the narrative around men's mental health by fostering an environment
+        that encourages genuine connections. At BroBonds, we understand the challenges of loneliness and the impact it has
+        on mental well-being. Our platform offers a diverse range of opportunities, from engaging with insightful blogs that
+        resonate with personal experiences to participating in engaging online and in-person events curated to spark
         meaningful connections.
     </p>
     <p>
-        Our mission is to provide a safe and inclusive space where men can find solace and build meaningful connections 
-        through shared interests. Whether you're exploring anonymously or actively participating in our vibrant community, 
+        Our mission is to provide a safe and inclusive space where men can find solace and build meaningful connections
+        through shared interests. Whether you're exploring anonymously or actively participating in our vibrant community,
         BroBonds offers a variety of pathways. Dive into blogs that provide valuable insights or join our
         range of events where you can connect with like-minded individuals. Our goal is to support your journey towards
         greater social connections, understanding, and a profound sense of belonging.
@@ -59,41 +78,41 @@
 
 <!-- Blog and Event Cards -->
 
+<!-- LATEST BLOG - render one, dynamically populated with the latest blog -->
 <div class="container mt-5">
     <h2 class="text-center mb-4">Check Out Our Amazing Community</h2>
     <div class="row">
-      <div class="col-md-4 mb-4">
+      <div class="col-md-6 mb-4">
         <div class="card">
-          <div class="placeholder-img border"></div>
-          <div class="card-body">
-            <h5 class="card-title">Latest Blog</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-          </div>
+          {% if latest_blog.image %}
+            <img src="{{ latest_blog.image.url }}" class="card-img-top" alt="Blog Image">
+          {% else %}
+              <img src="{% static 'images/blog-img-placeholder.webp' %}" class="card-img-top" alt="Default Image">
+          {% endif %}
+              <div class="card-body">
+                  <h5 class="card-title">{{ latest_blog.title }}</h5>
+                  <p class="card-text">{{ latest_blog.content|truncatechars:100|safe }}</p>
+                  <a href="{% url 'blog_list' %}" class="btn btn-primary">Read More</a>
+              </div>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
+
+      <!-- LATEST EVENTS - render one, dynamically populated with the latst get together event -->
+      <div class="col-md-6 mb-4">
         <div class="card">
-          <div class="placeholder-img border"></div>
-          <div class="card-body">
-            <h5 class="card-title">Popular Blog</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <div class="placeholder-img border"></div>
-          <div class="card-body">
-            <h5 class="card-title">Latest Event</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-          </div>
+            {% if latest_event.image %}
+                <img src="{{ latest_event.image.url }}" class="card-img-top" alt="{{ latest_event.title }}">
+            {% else %}
+                <div class="placeholder-img border"></div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ latest_event.title }}</h5>
+                <p class="card-text">{{ latest_event.description|truncatechars:100|safe }}</p>
+                <a href="{% url 'get_together_detail' latest_event.id %}" class="btn btn-primary">Read More</a>
+            </div>
         </div>
       </div>
     </div>
   </div>
-  
-{% endblock%}
 
+{% endblock%}

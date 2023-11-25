@@ -2,43 +2,36 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <!-- Favicon links, code copied from https://favicon.io/ -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch.svg' %}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/fav-32x32.svg' %}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/fav-16x16.svg' %}">
-        <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}"> 
-        {% block extra_css %}  
+<head>
+    {% block meta %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/duiyfy10a/raw/upload/v1/static/favicon/apple-touch.0d65c85fe203.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/duiyfy10a/raw/upload/v1/static/favicon/fav-32x32.cc25da7dd573.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/duiyfy10a/raw/upload/v1/static/favicon/fav-16x16.a408cabe8c70.svg">
+    <link rel="manifest" href="https://res.cloudinary.com/duiyfy10a/raw/upload/v1/static/favicon/site.053100cb84a5.webmanifest">
+    {% endblock %}
 
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-            integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
-        {% endblock %} {% block onload_js%}
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous">
-        </script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"
-            integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer">
-        </script>
-        {% endblock %}
+    {% block core_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://res.cloudinary.com/duiyfy10a/raw/upload/v1/static/css/base.15b63986bece.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    {% endblock %}
 
-        <title>MOvember {% block title %} {% endblock %}</title>
-    </head>
-    <body>
-        
-        {% if messages %}
-        <div class="message-container">
+    {% block corejs %}
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% endblock %}
+
+
+    <title>BroBonds{% block extra_title %}{% endblock %} </title>
+
+</head>
+<body>
+
+    {% if messages %}
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3">
             {% for message in messages %}
                 {% with message.level as level %}
                     {% if level == 40 %}
@@ -53,19 +46,29 @@
                 {% endwith %}
             {% endfor %}
         </div>
-        {% endif %}
-        {% include 'includes/header.html' %}
-        <main>
-        {% block content %} 
-        {% endblock %}
-        </main>
+    </div>
+    {% endif %}
 
-        {% include 'includes/footer.html' %} {% block extra_js %} {% endblock %}
-        {% block postloadjs %}
-        <script type="text/javascript">
-            $('.toast').toast('show');
-        </script>
+    {% include 'includes/header.html' %}
+    <main>
+        {% block content %}
         {% endblock %}
+    </main>
 
-    </body>
+    {% include 'includes/footer.html' %}
+    {% block extra_js %}
+    {% endblock %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl)
+            })
+            toastList.forEach(toast => toast.show());
+        });
+    </script>
+    {% block postloadjs %}
+    {% endblock %}
+
+</body>
 </html>

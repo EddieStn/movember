@@ -34,7 +34,7 @@
                             {% endif %}
                             <h3><a href="{% url 'blog_detail' blog.id %}" class="blog-title">{{ blog.title }}</a></h3>
                             <p>Author: {% if blog.author %}{{ blog.author.username }}{% else %}Anonymous{% endif %}</p>
-                            <p>Content: {{ blog.content }}</p>
+                            <p>Content: {{ blog.content|truncatechars:100|safe }}</p>
                             <p>Created at: {{ blog.created_at }}</p>
                             <p>Likes: {{ blog.likes_count }}</p>
                             <p>Comments: {{ blog.comments.count }}</p>

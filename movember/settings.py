@@ -30,7 +30,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = False
+
+X_FRAME_OPTIONS = 'ALLOW-FROM https://amiresponsive.co.uk/ https://responsivedesignchecker.com/ https://techsini.com/multi-mockup/'
+
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'movember1-bac9d403956e.herokuapp.com', '*.herokuapp.com']
 
@@ -131,7 +135,7 @@ AUTHENTICATION_BACKENDS = [
 WSGI_APPLICATION = 'movember.wsgi.application'
 
 
-# Database
+# Databases
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # DATABASES = {
