@@ -11,9 +11,28 @@
   <div class="d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle text-white text-center w-75">
       <!-- Hero text -->
       <div class="bg-dark bg-opacity-75 p-4 rounded">
-          <h1 class="hero-text call-to-action">Share your story with others! Test</h1>
-          <h4 class="hero-subtext">Join the community and inspire others</h4>
-          <a class="btn btn-outline-light call-to-action" href="{% url 'account_signup' %}" role="button">Join us now</a>
+          {% if request.user.is_authenticated %}
+              <p class="hero-text h1">Thanks for joining us!</p>
+              <p class="hero-text h1">If you've been here before, welcome back!</p>
+              <p class="hero-subtext h4">Do checkout the latest blogs and events.</p>
+              <div class="container d-flex justify-content-center align-items-center">
+                <div class="mx-2">
+                  <a class="btn btn-warning" href="{% url 'blog_list' %}" role="button">Latest blogs</a>
+                </div>
+                <div class="mx-2">
+                  <a class="btn btn-warning" href="{% url 'get_together_list' %}" role="button">Latest get togethers</a>
+                </div>
+              </div>
+          {% else %}
+              <h1 class="hero-text">
+                  "When the gap is too great, step by step the impossible becomes achievable.
+                  Supporting men across the chasm from loneliness to connection, friendship and belonging,
+                  through shared interests."
+              </h1>
+              <h4 class="hero-subtext">Join the community and inspire others</h4>
+              <a class="btn btn-outline-light call-to-action" href="{% url 'account_signup' %}" role="button">Join us now</a>
+          {% endif %}
+
       </div>
   </div>
 </div>
@@ -63,7 +82,7 @@
 <div class="container mt-5">
     <h2 class="text-center mb-4">Check Out Our Amazing Community</h2>
     <div class="row">
-      <div class="col-md-4 mb-4">
+      <div class="col-md-6 mb-4">
         <div class="card">
           {% if latest_blog.image %}
             <img src="{{ latest_blog.image.url }}" class="card-img-top" alt="Blog Image">
@@ -77,19 +96,9 @@
               </div>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <div class="placeholder-img border"></div>
-          <div class="card-body">
-            <h5 class="card-title">Popular Blog</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-          </div>
-        </div>
-      </div>
 
       <!-- LATEST EVENTS - render one, dynamically populated with the latst get together event -->
-      <div class="col-md-4 mb-4">
+      <div class="col-md-6 mb-4">
         <div class="card">
             {% if latest_event.image %}
                 <img src="{{ latest_event.image.url }}" class="card-img-top" alt="{{ latest_event.title }}">
@@ -107,4 +116,3 @@
   </div>
 
 {% endblock%}
-
