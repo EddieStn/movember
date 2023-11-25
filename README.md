@@ -503,7 +503,7 @@ The my profile page includes:
 - Clearly visible buttons to submit the form
 
 ### Blog list page
-[image of blog list]
+<img src="documentation\readme-images\blog-list.png">
 
 The blog list page includes:
 - Clearly visible buttons to create the blog
@@ -519,7 +519,7 @@ The blog list page includes:
 - Clearly visible buttons to view the entire blog
 
 ### Blog page
-[image of blog]
+<img src="documentation\readme-images\blog.png">
 
 The blog page includes:
 - Static image of the blog
@@ -534,7 +534,7 @@ The blog page includes:
 - Clearly visible buttons to submit the blog
 
 ### Create Blog page
-[image of create blog]
+<img src="documentation\readme-images\create-blog.png">
 
 The create blog page includes:
 - A field for users to fill the title of the blog
