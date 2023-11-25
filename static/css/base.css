@@ -261,8 +261,8 @@ footer a {
 }
 
 .blog-title {
-    color: var(--orange);
-    text-decoration: none;
+    color: var(--dark-blue);
+    text-decoration: none;    
 }
 
 /* ----------- Create Blog --------- */
