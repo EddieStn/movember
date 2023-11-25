@@ -27,6 +27,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('profile/', include('profiles.urls')),
     path('get-together/', include('get_together.urls')),
+    path('contact/', include('contact.urls')),
 ]
 
 handler404 = 'movember.views.handler404'

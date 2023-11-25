@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'blog',
     'profiles',
     'get_together',
+    'contact',
 
      # Other
     'crispy_forms',
@@ -191,9 +192,9 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 
-cloudinary.config( 
-  cloud_name = "duiyfy10a", 
-  api_key = "527288786513998", 
+cloudinary.config(
+  cloud_name = "duiyfy10a",
+  api_key = "527288786513998",
   api_secret = "tVaPmUQOXfnsIyK4DQ-_sFUWuFI"
 )
 
