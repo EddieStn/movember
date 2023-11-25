@@ -1,5 +1,12 @@
 # Project Name
-Developers: Team name (Joy Zadan, Georgina Carlisle, Radleigh Smith, Callum Jepps, Edison Kwan, Eduard Viorel Stan)
+Developers: Team!Alone
+
+(Joy Zadan)[https://github.com/JoyZadan]
+(Eduard Viorel Stan)[https://github.com/EddieStn]
+(Georgina Carlisle)[https://github.com/GeorginaCarlisle] 
+(Radleigh Smith)[https://github.com/RadleighSmith]
+(Callum Jepps)[https://github.com/CJepps]
+(Edison Kwan)[https://github.com/edisonkwan18]
 
 Image showcasing project to go here
 
