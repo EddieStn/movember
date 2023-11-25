@@ -668,12 +668,152 @@ These tools and packages collectively contributed to the successful development 
 
 ## Deployment
 
+# Development and Deployment
+## Local development
+* Create your Django app. In the terminal write the following in order:
+    1. Install Django and gunicorn: `pip3 install django gunicorn`
+    2. Install database libraries dj_database_url and psycopg2 library: `pip3 install dj_database_url psycopg2`
+    3. Install Cloudinary libraries to manage photos: `pip3 install dj-3-cloudinary-storage`
+    4. Create file for requirements file: `pip freeze --local > requirements.txt`
+    5. Create your project: `django-admin startproject your_project_name .` ( remember the . at the end)
+    6. Create your app: `django-admin startapp your_app_name`
+    7. Migrate: `python3 manage.py makemigrations` and `python3 manage.py migrate`
+    8. Run the server to test if the app is installed: `python3 manage.py runserver`
+
+## Heroku deployment
+### The site was deployed via Heroku. The live link can be found here - [Inventory](https://)
+
+* To deploy the project through Heroku I followed these steps:
+
+    * Sign up / Log in to Heroku
+    * From the main Heroku Dashboard page select `New` and then `Create New App`
+    * Give the project a name - in my case inventory-es and select a `region`, then select `create app`.
+    * This will create the app within Heroku.
+    * For the database, I used ElephantSQL
+        * Navigate to ElephantSQL.com and log-in/sign-up.
+        * Create new instance
+        * Choose a name and the free plan, tags can be left blank
+        * Select a region and click Review and then Create
+        * From the dashboard, select the created instance and copy the URL to the clipboard
+    * To save static and media files, I used Cloudinary
+        * Navigate to cloudinary.com and log-in/sign-up.
+        * From the dashboard - copy the CLOUDINARY_URL to the clipboard
+    * In Heroku navigate to the setting tab and scroll utill you find `Reveal config vars`.
+    * Add to the config vars DATABASE_URL as the KEY and paste the URL from your ElephantSQL as the VALUE
+    * Add to the config vars CLOUDINARY_URL as the KEY and paste the URL as the VALUE
+    * Also add the KEY - DISABLE_COLLECTSTATIC with the Value - 1 to the config vars
+    * This key value pair must be removed prior to final deployment
+    * In the root directory of your repository in github create a new file called `env.py` and write the following code:
+        ```
+        import os
+
+        os.environ["DATABASE_URL"]="postgres://url"
+        os.environ["SECRET_KEY"]="your secret key"
+        os.environ["CLOUDINARY_URL"]="cloudinary://url"
+        ```
+    * Add the secret key just created to the Heroku Config Vars. SECRET_KEY as the KEY and the secret key value you created as the VALUE
+    * In settings.py write the following code:
+        ```
+        from pathlib import Path
+        import os
+        import dj_database_url
+        if os.path.isfile('env.py'):
+            import env
+        ```
+    * Replace the secret key that django has in the settings.py with `SECRET_KEY = os.environ.get('SECRET_KEY')`
+    * Comment out the default database and replace it with:
+        ```
+        DATABASES = {
+            'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        }
+        ```
+    * Make migrations:
+        * python3 manage.py makemigrations
+        * python3 manage.py migrate
+    * In the following order, add the Cloudinary libraries to the Django settings.py section for installed apps:
+        ```
+        'cloudinary_storage'
+        'django.contrib.staticfiles',
+        'cloudinary',
+        ```
+    * Add the following in settings.py to connect Cloudinary to Django:
+        ```
+        STATIC_URL = '/static/'
+        STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+        STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+        STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+        MEDIA_URL = '/media/'
+        DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+        ```
+    * Link the file to the templates directory in Heroku TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+    * Change the templates directory to TEMPLATES_DIR - 'DIRS': [TEMPLATES_DIR]
+    * For the `ALLOWED_HOSTS` add your heroku url and your localhost:
+        ```
+        ALLOWED_HOSTS = ['inventory-es.herokuapp.com', 'localhost']
+        ```
+    * In your root directory, create three new top folders: media, static and templates
+    * Create a `Procfile` file in the root directory
+    * Within the Procfile add the code - `web: guincorn PROJECT_NAME.wsgi`
+    * In the terminal, add the changed files, commit and push to GitHub
+    * In Heroku, navigate to the deployment tab and deploy the branch manually - watch the build logs for any errors.
+    * Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
+
+## Final Deployment
+
+* Upon completion of development, change in settings.py DEBUG = True to DEBUG = False
+    * To have DEBUG set to true for your local development and false for Heroku:
+        * In env.py add another line `os.environ['DEV'] = 'Yes please!'` ( note that the value you set does not matter )
+        * In settings.py and DEBUG = False to `DEBUG = 'DEV' in os.environ`
+* In Heroku settings config vars change the DISABLE_COLLECTSTATIC value to 0
+* 'Choose a branch to deploy' should be 'main' and search for your repository
+* To manually deploy click the button 'Deploy Branch'
+* Your app was successfully deployed will be displayed when the app is deployed.
+* The deployed app will appear in the browser after you click "view."
+
+## Forking and Cloning
+
+## Forking a repository
+### A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.
+1. On GitHub.com, navigate to https://github.com/EddieStn/inventory.
+2. In the top-right corner of the page, click Fork.
+
+## Cloning your forked repository
+### Right now, you have a fork of the Inventory repository, but you do not have the files in that repository locally on your computer.
+1. On GitHub.com, navigate to your fork of the inventory repository.
+2. Above the list of files, click Code.
+3. Copy the URL for the repository.
+4. Open Git Bash.
+5. Change the current working directory to the location where you want the cloned directory.
+6. Type git clone, and then paste the URL you copied earlier. It will look like this, with your GitHub username instead of YOUR-USERNAME:
+   - git clone https://github.com/YOUR-USERNAME/movember
+7. Press Enter. Your local clone will be created.
+
 [Return to contents list](#contents)
 
 
 ## Credits
 
 * [Uizard.io](https://uizard.io/) for facilitating intuitive wireframing and seamless UX design.
+* [Draw IO](http://draw.io/) Create flow diagrams during design
+* [Google Fonts](fonts.google.com/) Fonts (Kanit, Roboto)
+* [Colormind IO](colormind.io/) To generate the color scheme
+* [Contrast Grid](contrast-grid.eightshapes.com) For the contrast grid to check accessibility between colors 
+* [Favicon](favicon.io) Convert image to favicon
+* [Ideogram](ideogram.ai) Design the draft of logo
+
+### image
+| Name     | Link                                                                                                                                                                                                                                         | Where or why used            | Author                  |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------------------- |
+| Unsplash | [https://unsplash.com/photos/row-of-four-men-sitting-on-mountain-trail-TkrRvwxjb_8](https://unsplash.com/photos/row-of-four-men-sitting-on-mountain-trail-TkrRvwxjb_8)                                                                       | Used as the Hero Image       | Matheus Ferrero         |
+| Pexels   | [https://images.pexels.com/photos/17249634/pexels-photo-17249634/free-photo-of-a-rock-band-with-electric-guitars.jpeg](https://images.pexels.com/photos/17249634/pexels-photo-17249634/free-photo-of-a-rock-band-with-electric-guitars.jpeg) | Used of blog about music     | Siahei Dalivelia        |
+| Unsplash | [https://unsplash.com/photos/man-standing-on-rock-looking-towards-lake-BKLHxgbYFDI](https://unsplash.com/photos/man-standing-on-rock-looking-towards-lake-BKLHxgbYFDI)                                                                       | Used of blog about hiking    | Sébastien Goldberg      |
+| Unsplash | [https://unsplash.com/photos/a-man-riding-a-bike-down-a-sidewalk-kFVAB4_0Es4](https://unsplash.com/photos/a-man-riding-a-bike-down-a-sidewalk-kFVAB4_0Es4)                                                                                   | Used of blog about cycling 1 | jatinder nagra          |
+| Unsplash | [https://unsplash.com/photos/man-in-black-jacket-riding-bicycle-on-road-during-daytime-jWpXo26edEE](https://unsplash.com/photos/man-in-black-jacket-riding-bicycle-on-road-during-daytime-jWpXo26edEE)                                       | Used of blog about cycling 2 | Jordan Brierley         |
+| Unsplash | [https://unsplash.com/photos/man-sitting-beside-cup-of-coffee-x7h5HLsBYwo](https://unsplash.com/photos/man-sitting-beside-cup-of-coffee-x7h5HLsBYwo)                                                                                         | Used of blog about reading   | Viktor Forgacs          |
+| Unsplash | [https://unsplash.com/photos/three-men-laughing-while-looking-in-the-laptop-inside-room-XkKCui44iM0](https://unsplash.com/photos/three-men-laughing-while-looking-in-the-laptop-inside-room-XkKCui44iM0)                                     | Used of event about reading  | Priscilla Du Preez 🇨🇦 |
+| Komoot   | [https://www.komoot.com/smarttour/1189112996](https://www.komoot.com/smarttour/1189112996)                                                                                                                                                   | Used of event about cycling  | Rombea                  |
+| Unsplash | [https://unsplash.com/photos/man-in-blue-polo-shirt-talking-to-man-while-drinking-coffee-l4dZ4h6vL6o](https://unsplash.com/photos/man-in-blue-polo-shirt-talking-to-man-while-drinking-coffee-l4dZ4h6vL6o)                                   | Used on the about us page    | <br>Shane Rounce
 
 [Return to contents list](#contents)
 
