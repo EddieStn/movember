@@ -1,12 +1,17 @@
-# Project Name
-Developers: Team name (Joy Zadan, Georgina Carlisle, Radleigh Smith, Callum Jepps, Edison Kwan, Eduard Viorel Stan)
+# BroBonds
+Developed by Team!Alone:
+[Joy Zadan](https://github.com/JoyZadan)
+[Eduard Viorel Stan](https://github.com/EddieStn)
+[Georgina Carlisle](https://github.com/GeorginaCarlisle)
+[Radleigh Smith](https://github.com/RadleighSmith)
+[Callum Jepps](https://github.com/CJepps)
+[Edison Kwan](https://github.com/edisonkwan18)
 
 Image showcasing project to go here
 
 
 
-Project currently under development and no live link available.
-
+Live link: https://movember1-bac9d403956e.herokuapp.com/
 
 ## Contents
 
@@ -145,7 +150,7 @@ Uniquely, the platform will be designed to provide as few as possible barriers f
 
 The flow chart below plans how users might negotiate that chasm step by step through our site.
 
-![Flow diagram showing how a user might negotiate the chasm between loneliness to connection, friendship and belonging](documentation/planning/negotitating-the-chasm.drawio.png)
+![Flow diagram showing how a user might negotiate the chasm between loneliness to connection, friendship and belonging](documentation/readme-images/negotitating-the-chasm.drawio.png)
 
 [Return to contents list](#contents)
 
@@ -153,6 +158,103 @@ The flow chart below plans how users might negotiate that chasm step by step thr
 
 ### The Scope Plane
 
+The scope of this project is provided by user stories, organised below by epic and then role.
+
+#### EPIC - General User Account
+
+As a new user I can register for an account so that I can access registered user only content and create and comment on blogs.
+
+As a registered user I can use my username and password to login to my account so that my account remains secure and only I can login.
+
+As a signed-in user I can easily logout of my account so that I can keep my account secure.
+
+As a registered user I can reset my password so that I can still log into my account if I forget my password
+
+As a signed-in user I can access and edit my profile information so that I can make changes or add additional preference or information.
+
+As a site admin I can remove accounts so that I can prevent unsuitable users from accessing and using the platform.
+
+As a signed-in user I can click on the picture of a fellow user and bring up there about me information so that I can get to know my fellow user
+
+#### EPIC - Facilitator Account
+
+As a registered user I can apply to become a facilitator so that I can support other users, contribute to the platform and create and host events.
+
+As a site admin I can authorise an application to become a facilitator so that I can ensure only suitable users can become facilitators.
+
+#### EPIC - Visiting User Experience
+
+As a new user I can understand what this website is about and the potential value I can gain from it so that I can decide whether I would like to explore the site further and sign up.
+
+As a new user I can read blog posts about a range of interests so that I can gain an idea of the value I might gain by registering for the platform.
+
+As a user I can contact the site owner so that provide feedback or ask any questions I may have.
+
+As a new user I can read frequently asked questions so that I can find out the answers to some of my questions and concerns.
+
+As a new user I can find out who created this platform and why so that I can understand more about what this platform is about and who it was created by.
+
+#### EPIC - Navigation
+
+As a new user I can navigate easily and intuitively to all available content so that I can quickly find what I need.
+
+As a signed-in user I can navigate easily and intuitively to all registered user content so that I can quickly find what I am looking for.
+
+
+
+#### EPIC - Blogs
+
+As a signed in user I can view all blogs so that read and find out about different areas of interest.
+
+As a signed-in user I can create a blog so that I can share information about something that interests me.
+
+As a signed-in user I can edit a blog I have created so that I fix any mistakes or make changes.
+
+As a signed-in user I can search the blogs by entering a key term so that I can find specific blogs.
+
+As a signed-in I can view blogs in order of preference based on my interests so that I am shown the blogs most relevant to me first.
+
+As a signed-in user I can filter the blogs according to different options so that I can control the order in which the blogs are shown.
+
+As a site admin I can remove blogs so that I can ensure only positive and relevant blogs are available on the platform.
+
+#### EPIC - Blog Commenting
+
+As a signed-in user I can view all comments associated with a blog so that follow the conversation.
+
+As a signed-in user I can comment on blogs so that I can share my thoughts and contribute.
+
+As a signed-in user I can edit any comments that I have made so that I can fix any mistakes made when posting.
+
+As a signed-in user I can delete any of my comments so that I can change my mind and remove my comment.
+
+As a site admin I can remove comments so that I can ensure the platform remains positive and respectful, was comments inline with the purpose of the platform.
+
+#### EPIC - Events
+
+As a Signed-in user I can view all events so that I see what is coming up.
+
+As a signed-in user I can view events ordered to show my preferences and events close to me first so that I can view the most relevant events first.
+
+As a signed-in user I can choose how to filter and order events so that I can control the order in which the events are shown.
+
+As a signed-in user I can use keywords to search for specific events so that I can locate specific events.
+
+As a signed-in user I can comment on events so that I can ask questions about the event, pass on positive reviews, or let others know I'm thinking of attending.
+
+As a signed-in user I can sign up to attend events so that I can let the organisers know I wish to attend.
+
+As a facilitator I can create and post events so that I can provide opportunities for users to meet and connect through a shared interest.
+
+As a facilitator I can edit event details so that I can fix a mistake or update information should things change.
+
+As a facilitator I can delete events I created so that I remove the details from a past event, or an event that has been cancelled.
+
+As a facilitator I can view a list of users who have signed up to the event so that I know how many people might turn up and who.
+
+As a site admin I can remove events so that I can remove past events, events that may pose a threat or events not inline with the aim of the platform.
+
+As a site admin I can remove event comments so that I can ensure the platform remains positive and respectful.
 
 [Return to contents list](#contents)
 
