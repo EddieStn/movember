@@ -14,7 +14,7 @@
 
     /* Global Button Styling */
 
-    --call-to-action:var(--orange)
+    --call-to-action: #ffae42;
 }
 
 * {
@@ -82,7 +82,7 @@ img.logo {
 
 .hero-image {
     width: 100%;
-    
+
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -101,35 +101,35 @@ img.logo {
 /* PLACEHOLDER FOR THE CARDS */
 /* PLEASE REMOVE WHEN CARDS IMPLEMENTED */
 .placeholder-img {
-    height: 200px; 
+    height: 200px;
     border: 1px solid #ddd;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 
 @media (max-width: 575px) {
     .hero-text {
-        font-size: 1.5rem; 
-        margin-bottom: 10px; 
+        font-size: 1.5rem;
+        margin-bottom: 10px;
     }
     .hero-subtext {
-        font-size: 1rem; 
-        margin-bottom: 10px; 
+        font-size: 1rem;
+        margin-bottom: 10px;
     }
     .call-to-action {
-        padding: 6px 12px; 
-        font-size: 0.8rem; 
+        padding: 6px 12px;
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 470px) {
     .hero-text {
-        font-size: 1rem; 
-        margin-bottom: 5px; 
+        font-size: 1rem;
+        margin-bottom: 5px;
     }
     .hero-subtext {
-        font-size: .8rem; 
-        margin-bottom: 5px; 
+        font-size: .8rem;
+        margin-bottom: 5px;
     }
 }
 
@@ -146,17 +146,17 @@ footer a {
 }
 
 .footer-images {
-    width: 6.25rem; 
-    height: 6.25rem; 
-    border-radius: 50%; 
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 50%;
     border: var(--black) 1px solid;
 }
 .zoom-effect img {
     transition: transform 0.3s ease-in-out;
   }
-  
+
 .zoom-effect:hover img {
-    transform: scale(1.1); 
+    transform: scale(1.1);
   }
 
   @media screen and (max-width:767px) {
@@ -164,7 +164,7 @@ footer a {
         width: 4rem;
         height: 4rem;
     }
-     
+
 }
 
 /* ----------Header---------- */
