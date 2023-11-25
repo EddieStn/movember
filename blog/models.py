@@ -2,31 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-
-class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
-
 class Interest(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Blog(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    likes = models.ManyToManyField(Like, related_name='blog_likes', blank=True)
-    comments = models.ManyToManyField(Comment, related_name='blog_comments', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField(User, related_name='blog_likes', blank=True)
     anonymous = models.BooleanField(default=False)
     interests = models.ManyToManyField(Interest, blank=True)
     image = models.ImageField(upload_to='blog-images/', blank=True, null=True)
@@ -37,4 +25,18 @@ class Blog(models.Model):
     
     @property
     def comments_count(self):
-        return self.comments.count()
+        return self.comments.filter(approved=True).count()
+
+
+class Comment(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=80)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f"(Comment {self.body} by {self.name}"

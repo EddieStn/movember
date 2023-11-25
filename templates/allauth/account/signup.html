@@ -1,32 +1,51 @@
-{% extends "account/base_entrance.html" %}
+{% extends "base.html" %}
+
+{% load static %}
+
 {% load allauth i18n socialaccount %}
 {% block head_title %}
     {% trans "Signup" %}
 {% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    <p>
-        {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-    </p>
-    {% url 'account_signup' as action_url %}
-    {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-        {% slot body %}
-            {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
-            {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
-            {% endif %}
-        {% endslot %}
-        {% slot actions %}
-            {% element button tags="prominent,signup" type="submit" %}
-                {% trans "Sign Up" %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
-    {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+
+<!-- Hero Image from Landing Page as background-->
+
+<div class="text-center bg-image position-relative">
+    <img src="{% static 'images/hero-image.jpg' %}" alt="Men Laughing" class="img-fluid hero-image" id="register-image" />
+    
+    <div class="d-flex justify-content-center align-items-center position-absolute start-50 translate-middle text-white text-center w-75 signup-container" >
+      <!-- Sign-up Form -->
+      <div class="bg-dark bg-opacity-75 p-2 rounded">
+        <h2 class="display-5 brand-font-alt mb-3">{% trans "Signup" %}</h2>
+        <hr>
+        <p class="over-18">
+            {% blocktrans %}By signing up, you confirm that you are 18 years of age or older.{% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+        </p>
+    
+        {% url 'account_signup' as action_url %}
+        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
+            {% slot body %}
+                {% csrf_token %}
+                {% element fields form=form unlabeled=True %}
+                {% endelement %}
+                {% if redirect_field_value %}
+                    <input type="hidden"
+                           name="{{ redirect_field_name }}"
+                           value="{{ redirect_field_value }}" />
+                {% endif %}
+            {% endslot %}
+            {% slot actions %}
+                <button class="btn btn-outline-light btn-lg call-to-action navigation-links" type="submit">{% trans "Sign up" %}</button>
+            {% endslot %}
+        {% endelement %}
+        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+      </div>
+    </div>
+  </div>
+</div>
+    
 {% endblock content %}

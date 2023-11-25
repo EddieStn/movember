@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container text-center">
+    <h1>Upcoming Get-Togethers</h1>
+</div>
+
+<div class="container d-flex flex-row flex-wrap justify-content-center mb-5">
+    {% for get_together in get_togethers %}
+        <a href="{% url 'get_together_detail' get_together.id %}" class="recipes text-decoration-none" aria-label="Click to view {{ get_together.title }}">
+            <div class="card m-3" style="width: 18rem;">
+                <img src="{{ get_together.image.url }}" class="card-img-top" alt="{{ recipe.image_alt }}">
+                <div class="card-body">
+                    <h2 class="card-title h5">{{ get_together.title }}</h2>
+                    <p class="card-text">Category: {{ get_together.category }}</p>
+                    <p class="card-text">Event Type: {{ get_together.event_type}}</p>
+                    <p class="card-text">Date: {{ get_together.date }}</p>
+                    <p class="card-text">Max Participants: {{ get_together.max_participants }}</p>
+                    <p class="card-text">Signup by: {{ get_together.signup_deadline }}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
+

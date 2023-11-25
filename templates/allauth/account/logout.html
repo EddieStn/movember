@@ -1,27 +1,40 @@
-{% extends "account/base_manage.html" %}
+{% extends "base.html" %}
+
+{% load static %}
+
 {% load allauth i18n %}
 {% block head_title %}
     {% trans "Sign Out" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Out" %}
-    {% endelement %}
-    <p>{% trans 'Are you sure you want to sign out?' %}</p>
-    {% url 'account_logout' as action_url %}
-    {% element form method="post" action=action_url no_visible_fields=True %}
-        {% slot body %}
-            {% csrf_token %}
-            {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
-            {% endif %}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" %}
-                {% trans 'Sign Out' %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
+
+
+<!-- Hero Image from Landing Page as background-->
+
+<div class="text-center bg-image position-relative">
+    <img src="{% static 'images/hero-image.jpg' %}" alt="Men Laughing" class="img-fluid hero-image" id="login-image"/>
+    
+    <div class="d-flex justify-content-center align-items-center position-absolute start-50 translate-middle text-white text-center w-75 login-container" >
+      <!-- Log in Form -->
+      <div class="bg-dark bg-opacity-75 p-2 rounded">
+        <h2 class="display-5 brand-font-alt mb-3">{% trans "Log Out" %}</h2>
+        <hr>
+        <p>{% trans 'Are you sure you want to log out?' %}</p>
+        {% url 'account_logout' as action_url %}
+        {% element form method="post" action=action_url no_visible_fields=True %}
+            {% slot body %}
+                {% csrf_token %}
+                {% if redirect_field_value %}
+                    <input type="hidden"
+                        name="{{ redirect_field_name }}"
+                        value="{{ redirect_field_value }}" />
+                {% endif %}
+            {% endslot %}
+            {% slot actions %}
+            <button class="btn btn-outline-light btn-lg call-to-action navigation-links" type="submit">{% trans "Logout" %}</button>
+            {% endslot %}
+        {% endelement %}
+  </div>
+</div>
+
 {% endblock content %}

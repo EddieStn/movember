@@ -1,74 +1,81 @@
 {% load static %}
+{% load crispy_forms_tags %}
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <!-- SAMPLE Logo -->
-        <a class="navbar-brand" href="{% url 'home' %}"
-            ><img
-                src="{% static 'images/abstract-owl-head-logo-creative-design-vector-30725425.webp' %}"
-                alt="sample logo"
-                class="logo"
-        /></a>
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
+<nav class="navbar p-0 navbar-expand-lg bg-body-tertiary" id="navbar">
+    <div class="container-fluid header">
+        <!-- Logo -->
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'images/abstract-owl-head-logo-creative-design-vector-30725425.webp' %}" alt="BroBonds Logo showing moustached man" class="logo" id="header-logo">
+        </a>
+
+        <!-- Toggler Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <!-- Navigation Items -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms ms-auto">
+
+                <!-- Home -->
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"
-                        >Home</a
-                    >
+                    <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
+
+                <!-- Authentication specific links -->
+                {% if request.user.is_authenticated %}
+                    <!-- Blog link -->
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'blog_list' %}">Blog</a>
+                    </li>
+
+                    <!-- Get Together Section -->
+                    {% if request.user.profile.is_facilitator and request.user.profile.is_facilitator_approved %}
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle btn btn-outline-light btn-lg call-to-action navigation-links" href="#" id="getTogetherMenuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Get Together
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="getTogetherMenuDropdown">
+                                <li><a class="dropdown-item" href="{% url 'get_together_list' %}">Event List</a></li>
+                                <li><a class="dropdown-item" href="{% url 'create_get_together' %}">Create Event</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'get_together_list' %}">Get together</a>
+                        </li>
+                    {% endif %}
+
+
+                {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'about' %}">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light btn-lg call-to-action navigation-links" aria-current="page" href="{% url 'faq' %}">FAQ</a>
+                    </li>
+                {% endif %}
+
+                <!-- Dynamic User Account Section -->
+                {% if request.user.is_authenticated %}
                 <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        Dropdown link
+                    <a class=" dropdown-toggle btn btn-outline-light btn-lg call-to-action navigation-links" href="#" id="userMenuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        My Account
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                            <a class="dropdown-item" href="#">Another action</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#"
-                                >Something else here</a
-                            >
-                        </li>
+                    <ul class="dropdown-menu" aria-labelledby="userMenuDropdown">
+                        <li><a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'profile' %}">My Profile</a></li>
+                        <li><a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'account_logout' %}">Logout</a></li>
                     </ul>
                 </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'account_signup' %}">Join</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'account_login' %}">Login</a>
+                </li>
+                {% endif %}
             </ul>
-            <!-- Form for Search Bar -->
-            <form class="d-flex" role="search">
-                <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                    Search
-                </button>
-            </form>
         </div>
     </div>
 </nav>

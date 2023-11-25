@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4 mb-4">
+    <form method="post" enctype="multipart/form-data">
+        <h1 class="text-center">Create a Get Together Event</h1>
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+        <div class="text-center">
+            <button type="submit" class="btn call-to-action">Add Get Together</button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

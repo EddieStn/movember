@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if can_join and request.user != get_together.organizer %}
+        <div class="container">
+            <h1>Register for {{ get_together.title }}</h1>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

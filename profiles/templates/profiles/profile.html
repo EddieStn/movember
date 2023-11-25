@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="container mt-5 mb-5 text-center bg-image position-relative">
+    <div class="about-section bg-dark-blue text-white p-4 rounded text-center" id="profile-container">
+        <div class="row">
+            <!-- User Profile Form -->
+            <div class="col-md-6">
+                <div>
+                <!-- Display User Profile Image -->
+                {% if request.user.profile.image %}
+                    <img src="{{ request.user.profile.image.url }}" alt="Profile Image">
+                {% else %}
+                    <img src="{% static 'images/abstract-owl-head-logo-creative-design-vector-30725425.webp' %}" alt="Default Image">
+                {% endif %}
+                </div>
+                <!-- Additional Actions -->
+                <div class="mt-5 mb-5">
+                    {% if request.user.profile.is_facilitator and request.user.profile.is_facilitator_approved %}
+                        <h2 class="facilitator-thankyou">Facilitator</h2>
+                        <p>Thank you for helping to foster a positive, inclusive vibe in the platform and arranging get togethers.</p>
+                    {% else %}
+                        <!-- Link to Contact App - Contact Form for Facilitator Request -->
+                        <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg call-to-action navigation-links">Request to be a facilitator</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-outline-light btn-lg call-to-action navigation-links">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

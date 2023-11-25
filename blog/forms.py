@@ -1,9 +1,12 @@
 from django import forms
-from .models import Blog, Interest
+from .models import Blog, Interest, Comment
+
 
 class BlogForm(forms.ModelForm):
     interests = forms.CharField(
-        max_length=255, help_text='Enter interests separated by commas'
+        max_length=255,
+        required=False,
+        help_text='Enter interests separated by commas',
     )
 
     class Meta:
@@ -13,11 +16,11 @@ class BlogForm(forms.ModelForm):
     def save(self, commit=True, author=None):
         blog = super().save(commit=False)
 
-        if commit:
-            blog.save()
-
         if author is not None:
             blog.author = author
+
+        if commit:
+            blog.save()
 
         interest_names = [name.strip() for name in self.cleaned_data['interests'].split(',')]
         for name in interest_names:
@@ -25,3 +28,9 @@ class BlogForm(forms.ModelForm):
             blog.interests.add(interest)
 
         return blog
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('body',)

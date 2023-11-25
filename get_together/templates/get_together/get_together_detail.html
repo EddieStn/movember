@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+
+     <!-- Please arrange these into "What, when, where, how" -->
+     <h1>{{ get_together.title }}</h1>
+     {% if get_together.image %}
+         <img src="{{ get_together.image.url }}" alt="{{ get_together.image_alt }}">
+     {% endif %}
+
+     {% if get_together.organizer.profile.alias %}
+         <p><strong>Organizer:</strong> {{ get_together.organizer.profile.alias }}</p>
+     {% else %}
+         <p><strong>Organizer:</strong> {{ get_together.organizer.username }}</p>
+     {% endif %}
+
+     <p>{{ get_together.category }}</p>
+     <p>{{ get_together.event_type }}</p>
+
+     <p><strong>Date:</strong> {{ get_together.date }}</p>
+     <p><strong>Time:</strong> {{ get_together.time }}</p>
+     <p><strong>Location:</strong> {{ get_together.location }}</p>
+
+     <p>{{ get_together.description|safe}}</p>
+
+     <p><strong>Maximum Participants:</strong> {{ get_together.max_participants }}</p>
+     <p><strong>Signup Deadline:</strong> {{ get_together.signup_deadline }}</p>
+
+     <!-- List of registered participants: -->
+     <div>
+         <p>Community members who already registered: {{ get_together.participants.count }}</p>
+         <ul>
+             {% for participant in get_together.participants.all %}
+                 <li>
+                     {% if participant.profile.alias %}
+                     <p><strong></strong> {{ participant.profile.alias }}</p>
+                     {% else %}
+                         <p><strong></strong> {{ participant.username }}</p>
+                     {% endif %}
+                 </li>
+             {% endfor %}
+         </ul>
+     </div>
+
+    <!-- CONDITIONAL RENDERING OF BUTTONS FOR PARTICIPANTS -->
+    {% if request.user != get_together.organizer %}
+        {% if request.user in get_together.participants.all %}
+            <form action="{% url 'withdraw_from_get_together' get_together.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-warning">Withdraw from this Get Together</button>
+            </form>
+        {% elif can_join %}
+            <form action="{% url 'register_for_get_together' get_together.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Join this Get Together</button>
+            </form>
+        {% endif %}
+    {% endif %}
+
+    <!-- CONDITIONAL RENDERING OF BUTTONS FOR FACILITATORS -->
+    <div>
+        {% if request.user == get_together.organizer %}
+            <a href="{% url 'edit_get_together' get_together.id %}" class="btn btn-secondary">Edit Get Together</a>
+        {% endif %}
+    </div>
+
+    <!-- Delete Button -->
+    {% if request.user == get_together.organizer %}
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+            Delete Event
+        </button>
+    {% endif %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this event?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form action="{% url 'delete_get_together' get_together.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
