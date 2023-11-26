@@ -92,7 +92,7 @@
               <div class="card-body">
                   <h5 class="card-title">{{ latest_blog.title }}</h5>
                   <p class="card-text">{{ latest_blog.content|truncatechars:100|safe }}</p>
-                  <a href="{% url 'blog_list' %}" class="btn btn-primary">Read More</a>
+                  <a href="{% url 'blog_list' %}" class="btn btn-outline-light btn-lg call-to-action navigation-links">Read More</a>
               </div>
         </div>
       </div>
@@ -108,7 +108,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ latest_event.title }}</h5>
                 <p class="card-text">{{ latest_event.description|truncatechars:100|safe }}</p>
-                <a href="{% url 'get_together_detail' latest_event.id %}" class="btn btn-primary">Read More</a>
+                <a href="{% url 'get_together_detail' latest_event.id %}" class="btn btn-outline-light btn-lg call-to-action navigation-links">Read More</a>
             </div>
         </div>
       </div>
