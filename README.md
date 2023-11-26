@@ -1,21 +1,33 @@
 # BroBonds
-Developed by Team!Alone:
-
-[Joy Zadan](https://github.com/JoyZadan)
-
-[Eduard Viorel Stan](https://github.com/EddieStn)
-
-[Georgina Carlisle](https://github.com/GeorginaCarlisle)
-
-[Radleigh Smith](https://github.com/RadleighSmith)
-
-[Callum Jepps](https://github.com/CJepps)
-
-[Edison Kwan](https://github.com/edisonkwan18)
-
-Image showcasing project to go here
 
 <img src="documentation/readme-images/techsini.png">
+
+## Developed by Team!Alone
+
+[Georgina Carlisle](https://github.com/GeorginaCarlisle) - Scrum Master
+
+[Joy Zadan](https://github.com/JoyZadan) - Backend Wizard
+
+[Eduard Viorel Stan](https://github.com/EddieStn) - Backend Wizard
+
+[Radleigh Smith](https://github.com/RadleighSmith) - Frontend Wizard
+
+[Callum Jepps](https://github.com/CJepps) - Frontend Wizard
+
+[Edison Kwan](https://github.com/edisonkwan18) - Frontend Wizard
+
+## Introduction
+
+BroBonds is a platform specifically designed to overcome the barriers that prevent men experiencing loneliness from gaining social contact and building supportive social connections. At BroBonds men can come together and connect with others over shared interests. They can create and comment on blog posts and sign up to online and in-person events.
+
+What is unique about our platform:
+- The option to remain anonymous for those feeling shy or anxious.
+- Facilitators who help to foster a positive, inclusive and open vibe throughout the platform.
+- A simple, easy to access and clear design providing a slick user journey.
+- The ability to switch into being visible on the site, so that relationships between users can start to be formed.
+- An online platform experience that builds towards get togethers that will then provide men with the chance to meet face to face, either online or in person and further develop connections and gain support from others.
+
+Future area of growth for the project will be in responding directly to the needs of our users and ways in which the platform can be used to also tackle the psychological factors associated with isolation.
 
 Live link: https://movember1-bac9d403956e.herokuapp.com/
 
@@ -37,23 +49,18 @@ Live link: https://movember1-bac9d403956e.herokuapp.com/
 
 [Features](#features)
 
-- [Existing Features](#existing-features)
-
-- [Future Features](#future-features)
-
 [Languages](#languages)
 
 [Tools and Technologies](#tools-and-technologies)
 
 [Testing and Validation](#testing-and-validation)
 
-[Bugs and Fixes](#bugs-and-fixes)
+[Development and Deployment](#development-and-deployment)
 
-[Deployment](#deployment)
+[Forking and Cloning](#forking-and-cloning)
 
 [Credits](#credits)
 
-[Acknowledgements](#acknowledgements)
 
 ---
 
@@ -80,8 +87,7 @@ There is clear and well evidenced research showing:
 
 -	Loneliness is an area where more needs to be done.
 
-However, there is little current research around how loneliness is most effectively tackled. With the suggestion that a 
-> range of approaches may be required, tailored to fit people’s individual experiences of loneliness and contexts. 
+However, there is little current research around how loneliness is most effectively tackled. With the suggestion that a 'range of approaches may be required, tailored to fit people’s individual experiences of loneliness and contexts'.
 
 <details>
 <summary>
@@ -268,6 +274,11 @@ As a site admin I can remove event comments so that I can ensure the platform re
 
 ### The Structure Plane
 
+Database Planning:
+
+![Models for blog and event](documentation/readme-images/database-planning-1.png)
+
+![Models for user profile, interest and comment](documentation/readme-images/database-planning-2.png)
 
 [Return to contents list](#contents)
 
@@ -346,7 +357,6 @@ During UI design, our focus on mobile convenience didn't compromise the desktop 
 <img src="documentation/readme-images/account-page-mobile-wireframes.png">
 
 
-
 [Return to contents list](#contents)
 
 ---
@@ -395,21 +405,17 @@ Agile values and principles have been followed in the creation of this project. 
 
 ## Features
 
-### Existing Features
-
 The existing features provide the following project requirements:
 
 ### Project Name
+
 <img src="documentation\readme-images\project-name.png">
 
 The project name is displayed consistently at the top of all three pages.
 
 ### Footer
-#### Footer in laptop view
-<img src="documentation\readme-images\footer.png">
 
-#### Footer in mobile view
-<img src="documentation\readme-images\mob-footer.png">
+<img src="documentation\readme-images\footer.png">
 
 The footer is displayed at the bottom of all pages. It has been styled to be sticky. All footer links open in a new tab
 
@@ -420,22 +426,24 @@ The footer includes:
 
 ### Landing page
 
-There are two landing pages. One is before login and one is after login.
-
-#### Landing page (Before Login)
-<img src="documentation\readme-images\land-before.png">
-
-#### Landing page (After Login)
-<img src="documentation\readme-images\land-after.png">
+![Top of home page as viewd by an unauthorized user](documentation/readme-images/home-page-1.png)
+![Bottom of home page as viewd by an unauthorized user](documentation/readme-images/home-page-2.png)
 
 The landing page includes:
 - A short introductory paragraph of BroBonds
 - A short slogan to call
 - Static image of Hero image for welcome
 - Clearly visible buttons to access the signup page
-- 3 cards present ‘Latest Blog’, ‘Popular Blog’ & ‘Latest Event’
+- 2 cards present ‘Latest Blog’ & ‘Latest Event’
+
+
+Once logged in the landing page will display with a different call to action message.
+
+![Alternate call to action for authorized users](documentation/readme-images/home-page-logged-in.png)
+
 
 ### Sign-up page
+
 <img src="documentation\readme-images\sign-up.png">
 
 The sign-up includes:
@@ -448,11 +456,13 @@ The sign-up includes:
 - Clearly visible buttons to submit the signup form
 
 ### Favicon and page titles
-<img src="documentation\readme-images\favicon.png">
+
+<img src="documentation\readme-images\page-tab.png">
 
 A favicon has been included and each page has a title of my app name \"BroBonds\".
 
 ### About us page
+
 <img src="documentation\readme-images\about-us.png">
 
 The About us page includes:
@@ -460,13 +470,14 @@ The About us page includes:
 - Static image of mens talk
 
 ### FAQ page
+
 <img src="documentation\readme-images\faq.png">
 
 TheFAQ  page includes:
 - 6 paragraphs to explain questions asked frequently by user
 
-
 ### Log in page
+
 <img src="documentation\readme-images\log-in.png">
 
 The Log in page includes:
@@ -502,8 +513,9 @@ The my profile page includes:
 - Clearly visible buttons to submit the request to be a facilitator and wait for decision of admin
 - Clearly visible buttons to submit the form
 
-### Blog list page
-<img src="documentation\readme-images\blog-list.png">
+### Discover Blogs
+
+![screenshot of the Discover Blogs page](documentation/readme-images/blog-page.png)
 
 The blog list page includes:
 - Clearly visible buttons to create the blog
@@ -518,7 +530,8 @@ The blog list page includes:
 - List of interests
 - Clearly visible buttons to view the entire blog
 
-### Blog page
+### Blog Details
+
 <img src="documentation\readme-images\blog.png">
 
 The blog page includes:
@@ -533,7 +546,8 @@ The blog page includes:
 - Leave comment section with the name of posting and comment
 - Clearly visible buttons to submit the blog
 
-### Create Blog page
+### Create Blog
+
 <img src="documentation\readme-images\create-blog.png">
 
 The create blog page includes:
@@ -544,8 +558,12 @@ The create blog page includes:
 - Clearly visible buttons to submit the blog
 
 ### Get Together
-### Event list page
-<img src="">
+
+![screenshot of get together page](documentation/readme-images/get-together-page.png)
+
+Clicking on the event bring up further details:
+
+![screenshot of get together page](documentation/readme-images/get-together-details.png)
 
 The create blog page includes:
 - Event title
@@ -563,7 +581,9 @@ The create blog page includes:
 - Clearly visible buttons to join the event
 
 ### Create event page
-<img src="">
+
+![screenshot of top of create event](documentation/readme-images/create-event-1.png)
+![screenshot of top of create event](documentation/readme-images/create-event-2.png)
 
 The create blog page includes:
 User can fill detail below
@@ -594,26 +614,16 @@ User can fill detail below
 [Return to contents list](#contents)
 
 
-### Future Features
-
-[Return to contents list](#contents)
-
-
 ## Languages
 
-During the development phase, we leveraged a comprehensive stack of technologies to ensure a robust and efficient web application. HTML served as the backbone for structuring the content and layout of our web pages, allowing us to define elements and organize information effectively.
+During the development phase, we leveraged a comprehensive stack of technologies to ensure a robust and efficient web application. **HTML** served as the backbone for structuring the content and layout of our web pages, allowing us to define elements and organize information effectively.
 
-CSS played a crucial role in enhancing the visual appeal and user experience of our platform. With CSS, we applied styles, customized layouts, and ensured a consistent design language throughout the application, providing an engaging interface for our users.
+**CSS** played a crucial role in enhancing the visual appeal and user experience of our platform. With CSS, we applied styles, customized layouts, and ensured a consistent design language throughout the application, providing an engaging interface for our users.
 
-Python, being the primary programming language, powered the backend of our application. We utilized Django, a powerful Python web framework, to streamline development tasks, manage databases, handle URL routing, and facilitate rapid development. This choice allowed us to build a scalable, maintainable, and secure application.
+**Python**, being the primary programming language, powered the backend of our application. We utilized **Django**, a powerful Python web framework, to streamline development tasks, manage databases, handle URL routing, and facilitate rapid development. This choice allowed us to build a scalable, maintainable, and secure application.
 
-Moreover, integrating Bootstrap into our project significantly expedited front-end development. The framework offered a collection of responsive design components and pre-styled elements, enabling us to create a user-friendly and visually appealing interface while ensuring compatibility across various devices and screen sizes. Overall, this technology stack facilitated a seamless development process and enabled us to create a feature-rich, user-centric web application.
+Moreover, integrating **Bootstrap** into our project significantly expedited front-end development. The framework offered a collection of responsive design components and pre-styled elements, enabling us to create a user-friendly and visually appealing interface while ensuring compatibility across various devices and screen sizes. Overall, this technology stack facilitated a seamless development process and enabled us to create a feature-rich, user-centric web application.
 
-### Languages:
-
-HTML,
-CSS,
-Python
 
 ### Frameworks/Libraries/Tools:
 
@@ -689,15 +699,10 @@ These tools and packages collectively contributed to the successful development 
 [Return to contents list](#contents)
 
 
-## Bugs and Fixes
+## Development and Deployment
 
-[Return to contents list](#contents)
+### Local development
 
-
-## Deployment
-
-# Development and Deployment
-## Local development
 * Create your Django app. In the terminal write the following in order:
     1. Install Django and gunicorn: `pip3 install django gunicorn`
     2. Install database libraries dj_database_url and psycopg2 library: `pip3 install dj_database_url psycopg2`
@@ -708,8 +713,9 @@ These tools and packages collectively contributed to the successful development 
     7. Migrate: `python3 manage.py makemigrations` and `python3 manage.py migrate`
     8. Run the server to test if the app is installed: `python3 manage.py runserver`
 
-## Heroku deployment
-### The site was deployed via Heroku. The live link can be found here - [Inventory](https://)
+### Heroku deployment
+
+**The site was deployed via Heroku. The live link can be found here - [BroBonds](https://movember1-bac9d403956e.herokuapp.com/)**
 
 * To deploy the project through Heroku I followed these steps:
 
@@ -787,7 +793,7 @@ These tools and packages collectively contributed to the successful development 
     * In Heroku, navigate to the deployment tab and deploy the branch manually - watch the build logs for any errors.
     * Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
 
-## Final Deployment
+### Final Deployment
 
 * Upon completion of development, change in settings.py DEBUG = True to DEBUG = False
     * To have DEBUG set to true for your local development and false for Heroku:
@@ -801,13 +807,17 @@ These tools and packages collectively contributed to the successful development 
 
 ## Forking and Cloning
 
-## Forking a repository
-### A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.
+### Forking a repository
+
+**A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.**
+
 1. On GitHub.com, navigate to https://github.com/EddieStn/inventory.
 2. In the top-right corner of the page, click Fork.
 
-## Cloning your forked repository
-### Right now, you have a fork of the Inventory repository, but you do not have the files in that repository locally on your computer.
+### Cloning your forked repository
+
+**Right now, you have a fork of the Inventory repository, but you do not have the files in that repository locally on your computer.**
+
 1. On GitHub.com, navigate to your fork of the inventory repository.
 2. Above the list of files, click Code.
 3. Copy the URL for the repository.
@@ -842,10 +852,5 @@ These tools and packages collectively contributed to the successful development 
 | Unsplash | [https://unsplash.com/photos/three-men-laughing-while-looking-in-the-laptop-inside-room-XkKCui44iM0](https://unsplash.com/photos/three-men-laughing-while-looking-in-the-laptop-inside-room-XkKCui44iM0)                                     | Used of event about reading  | Priscilla Du Preez 🇨🇦 |
 | Komoot   | [https://www.komoot.com/smarttour/1189112996](https://www.komoot.com/smarttour/1189112996)                                                                                                                                                   | Used of event about cycling  | Rombea                  |
 | Unsplash | [https://unsplash.com/photos/man-in-blue-polo-shirt-talking-to-man-while-drinking-coffee-l4dZ4h6vL6o](https://unsplash.com/photos/man-in-blue-polo-shirt-talking-to-man-while-drinking-coffee-l4dZ4h6vL6o)                                   | Used on the about us page    | <br>Shane Rounce
-
-[Return to contents list](#contents)
-
-
-## Acknowledgements
 
 [Return to contents list](#contents)
