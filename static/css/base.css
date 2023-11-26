@@ -90,6 +90,10 @@ img.logo {
     z-index: -2;
 }
 
+.hero-text {
+    font-size: 1.8rem;
+}
+
 .hero-text, .hero-subtext {
     margin-bottom: 1rem;
 }
@@ -97,15 +101,6 @@ img.logo {
 .about-section {
     background-color: var(--dark-blue) ;
 }
-
-/* PLACEHOLDER FOR THE CARDS */
-/* PLEASE REMOVE WHEN CARDS IMPLEMENTED */
-.placeholder-img {
-    height: 200px;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-}
-
 
 @media (max-width: 575px) {
     .hero-text {
@@ -130,6 +125,19 @@ img.logo {
     .hero-subtext {
         font-size: .8rem;
         margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    #hero-image {
+        height: 35rem;
+        object-fit: cover;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    #hero-text-cont {
+        max-width: 40rem;
     }
 }
 

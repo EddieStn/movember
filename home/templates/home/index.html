@@ -7,20 +7,20 @@
 <!-- Hero Image -->
 
 <div class="text-center bg-image position-relative">
-  <img src="{% static 'images/hero-image.jpg' %}" alt="Men Laughing" class="img-fluid hero-image" />
+  <img src="{% static 'images/hero-image.jpg' %}" alt="Men Laughing" class="img-fluid hero-image" id="hero-image" />
   <div class="d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle text-white text-center w-75">
       <!-- Hero text -->
-      <div class="bg-dark bg-opacity-75 p-4 rounded">
+      <div class="bg-dark bg-opacity-75 p-4 rounded" id="hero-text-cont">
           {% if request.user.is_authenticated %}
               <p class="hero-text h1">Thanks for joining us!</p>
               <p class="hero-text h1">If you've been here before, welcome back!</p>
               <p class="hero-subtext h4">Do checkout the latest blogs and events.</p>
               <div class="container d-flex justify-content-center align-items-center">
                 <div class="mx-2">
-                  <a class="btn btn-warning" href="{% url 'blog_list' %}" role="button">Latest blogs</a>
+                  <a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'blog_list' %}" role="button">Latest blogs</a>
                 </div>
                 <div class="mx-2">
-                  <a class="btn btn-warning" href="{% url 'get_together_list' %}" role="button">Latest get togethers</a>
+                  <a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'get_together_list' %}" role="button">Latest get togethers</a>
                 </div>
               </div>
           {% else %}
@@ -30,7 +30,7 @@
                   through shared interests."
               </h1>
               <h4 class="hero-subtext">Join the community and inspire others</h4>
-              <a class="btn btn-outline-light call-to-action" href="{% url 'account_signup' %}" role="button">Join us now</a>
+              <a class="btn btn-outline-light btn-lg call-to-action navigation-links" href="{% url 'account_signup' %}" role="button">Join us now</a>
           {% endif %}
 
       </div>
